@@ -1,4 +1,4 @@
-# APG Labs
+# Profit Pulse
 
 For running the project with Docker see below.
 
