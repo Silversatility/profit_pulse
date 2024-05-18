@@ -1,0 +1,89 @@
+<!-- BEGIN SIDEBAR -->
+<div class="left_col scroll-view" ng-controller="sideBarCtrl as vm">
+    <div class="navbar nav_title">
+        <a ui-sref="dashboard" class="site_title">
+            <img src="../../../assets/images/id.png" class="collapse-image" alt="Logo" />
+            <img src="../../../assets/images/idispense.png" class="expand-image" alt="Logo" />
+        </a>
+    </div>
+    <div class="clearfix"></div>
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+            <ul class="nav side-menu">
+                <li ng-if="vm.profile.user.is_manager && !vm.profile.credentialing_only">
+                    <a ui-sref="dashboard"><i class="fa fa-home"></i> Home</a>
+                    <a ui-sref="customerDashboard"><i class="fa fa-user"></i> Customer Dashboard</a>
+                    <a ui-sref="products"><i class="fa fa-cube"></i> Products Information</a>
+                    <a ui-sref="switchingFee"><i class="fa fa-archive"></i> Switches</a>
+                    <a ui-sref="dispenseHistory"><i class="fa fa-history"></i> Dispense History</a>
+                    <a ui-sref="salesRep"><i class="fa fa-cloud"></i> Sales Reps</a>
+                    <a ui-sref="customers"><i class="fa fa-users"></i> Customers</a>
+                    <a ui-sref="revenueReport"><i class="fa fa-tachometer"></i> Karis Revenue</a>
+                    <a ui-sref="CustomerRevenue"><i class="fa fa-tachometer"></i> Customer Revenue</a>
+                    <a ui-sref="credentialing"><i class="fa fa-graduation-cap"></i> Credentialing</a>
+                    <a ui-sref="newsfeeds"><i class="fa fa-newspaper-o"></i> News Feed</a>
+                </li>
+                <li ng-if="vm.profile.user.is_manager && vm.profile.credentialing_only">
+                    <a ui-sref="dashboard"><i class="fa fa-home"></i> Home</a>
+                    <a ui-sref="customers"><i class="fa fa-users"></i> Customers</a>
+                    <a ui-sref="credentialing"><i class="fa fa-graduation-cap"></i> Credentialing</a>
+                </li>
+                <li ng-if="vm.profile.user.is_sales_representative">
+                    <a ui-sref="dashboard"><i class="fa fa-home"></i> Home</a>
+                    <a ui-sref="products"><i class="fa fa-cube"></i> Products Information</a>
+                    <a ui-sref="dispenseHistory"><i class="fa fa-history"></i> Dispense History</a>
+                    <a ui-sref="customers"><i class="fa fa-users"></i> Customers</a>
+                    <a ui-sref="CustomerRevenue"><i class="fa fa-tachometer"></i> Customer Revenue</a>
+                </li>
+                <li ng-if="vm.profile.user.is_customer">
+                    <a ui-sref="customerDashboard"><i class="fa fa-user"></i> Customer Dashboard</a>
+                    <a ui-sref="products"><i class="fa fa-cube"></i> Products Information</a>
+                    <a ui-sref="dispenseHistory"><i class="fa fa-history"></i> Dispense History</a>
+                    <a ui-sref="profitability"><i class="fa fa-money"></i> Profitability</a>
+                    <a ui-sref="credentialingSingle"><i class="fa fa-graduation-cap"></i> Credentialing</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /sidebar menu -->
+
+</div>
+<!-- END SIDEBAR -->
+
+<style>
+    .nav_title {
+        border: 0;
+        height: 70px;
+        background: #ffffff;
+    }
+
+    .nav_title .site_title {
+        height: 100%;
+    }
+
+    .nav-md .nav_title .site_title {
+        padding: 0 0 5px;
+    }
+
+    .nav-sm .nav_title .site_title {
+        padding: 5px 10px 5px 17px
+    }
+
+    .nav_title .site_title img {
+        height: 100%;
+    }
+
+    .nav-md .nav_title .site_title .collapse-image {
+        display: none;
+    }
+
+    .nav-sm .nav_title .site_title .expand-image {
+        display: none;
+    }
+
+    .nav-md .menu_section {
+        padding: 0 10px;
+    }
+
+</style>

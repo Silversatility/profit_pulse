@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>{% trans 'Welcome to your Karis Pharma Portal!' %}</title>
+  </head>
+  <body>
+  <p>
+    {% blocktrans %}
+      Thank you for enrolling with Karis Pharma. We have created an Account, so you can view what products you're able to buy, dispense history, and helpful analytics.
+    {% endblocktrans %}
+  </p>
+  <p>{% trans "Here are your Portal Login Details (save this email for future reference):" %}</p>
+
+  <p>{% trans 'Username' %}: <strong>{{ user.email }}</strong></p>
+  <p>{% trans 'Password' %}: <a href="{{ current_site }}/#!/resetPassword/{{ uidb64 }}/{{ token }}">{% trans 'Click here to set your password' %}</a></p>
+
+  <p>{% trans 'If you have any questions, please email us at' %}: <a href="mailto:admin@karispharma.com">admin@karispharma.com</a></p>
+
+  <p>
+    {% trans 'Thank you!' %}<br />
+    {% trans 'Karis Pharma Staff' %}<br/>
+  </p>
+  </body>
+</html>

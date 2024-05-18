@@ -1,0 +1,1305 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="customers customer_documents">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Customer: {{vm.customer.business_name}}</h3>
+        </div>
+    </div>
+
+    <div class="credentialing">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="credentialing-header"></div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <!-- Initial Enrollment Forms and Documentation -->
+                        <div class="x_panel custom_panel">
+                            <div class="x_title">
+                                <h2 class="credentialing-sub-header">
+                                    <strong>Applicant Information</strong>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.practice_legal_name && vm.submitValidation }">Practice
+                                                Legal Name *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.practice_legal_name"
+                                                ng-model-options="{ debounce: 1000 }" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.practice_ein_tax_id_number && vm.submitValidation }">Practice
+                                                EIN/Tax ID Number *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.practice_ein_tax_id_number"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.date_practice_was_incorporated && vm.submitValidation }">Date
+                                                Practice was Formed *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.date_practice_was_incorporated"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.practice_doing_business_as && vm.submitValidation }">
+                                                Practice Doing Business as *
+                                                <small>(if other than Legal Name)</small>
+                                            </label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.practice_doing_business_as"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12 double-height">
+                                        <div class="phone-wrapper">
+                                            <div class="phone-number form-group">
+                                                <label
+                                                    ng-class="{ 'text-danger' : !vm.customer.practice_phone_number && vm.submitValidation }">Practice
+                                                    Phone Number *</label>
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.practice_phone_number"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                            <div class="phone-ext form-group">
+                                                <label>ext.*</label>
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.practice_phone_number_ext"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12 double-height">
+                                        <div class="phone-wrapper">
+                                            <div class="phone-number form-group">
+                                                <label>Practice Fax Number *</label>
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.practice_fax_number"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                            <div class="phone-ext form-group">
+                                                <label>ext.*</label>
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.practice_fax_number_ext"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.practice_primary_contact && vm.submitValidation }">Practice
+                                                Primary Contact *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.practice_primary_contact"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="phone-wrapper">
+                                            <div class="phone-number form-group">
+                                                <label
+                                                    ng-class="{ 'text-danger' : !vm.customer.primary_contact_phone && vm.submitValidation }">Primary
+                                                    Contact Phone *</label>
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.primary_contact_phone"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                            <div class="phone-ext form-group">
+                                                <label>ext.*</label>
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.primary_contact_phone_ext"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.primary_contact_email && vm.submitValidation }">Primary
+                                                Contact Email *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.primary_contact_email"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.physician_in_charge && vm.submitValidation }">Physician
+                                                in Charge (PIC) *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.physician_in_charge"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.pic_date_of_birth && vm.submitValidation }">PIC
+                                                Date of Birth *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.pic_date_of_birth"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.pic_social_security && vm.submitValidation }">PIC
+                                                Social Security # *</label>
+                                            <input
+                                                ui-mask="999999999"
+                                                class="form-control"
+                                                ng-change="vm.onChange()"
+                                                ng-model="vm.customer.pic_social_security"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.pic_dea_num && vm.submitValidation }">PIC
+                                                DEA # *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.pic_dea_num"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="phone-wrapper">
+                                            <div class="phone-number form-group">
+                                                <label
+                                                    ng-class="{ 'text-danger' : !vm.customer.pic_phone && vm.submitValidation }">PIC
+                                                    Phone *</label>
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.pic_phone"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                            <div class="phone-ext form-group">
+                                                <label>ext.*</label>
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.pic_phone_ext"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.pic_license_num && vm.submitValidation }">PIC
+                                                License # *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.pic_license_num"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.pic_lic_exp_date && vm.submitValidation }">PIC
+                                                Lic Exp Date *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.pic_lic_exp_date"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.pic_dea_expiration && vm.submitValidation }">PIC
+                                                DEA Expiration *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.pic_dea_expiration"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.practice_office_hours && vm.submitValidation }">Practice
+                                                Office Hours *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.practice_office_hours"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.facility_type_2_npi && vm.submitValidation }">Facility
+                                                Type 2 NPI # *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.facility_type_2_npi"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label>NCPDP #</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.ncpdp" ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <div class="form-group">
+                                            <label>If you currently have a NCPDP, what type of business do you dispense
+                                                for?</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.existing_ncpdp_type"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <p>
+                                                In order to begin the credentialing process, each facility MUST have a
+                                                Type 2 Facility NPI number. The address registered to the Type 2
+                                                Facility NPI must match the
+                                                physical location of the enrolling office. If your practice does not
+                                                have an active Type 2 Facility NPI number, you can apply for one at the
+                                                following link:
+                                                <a href="https://nppes.cms.hhs.gov/#/"
+                                                    style="color: #51C4D8">https://nppes.cms.hhs.gov/#/</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x_panel custom_panel">
+                            <div class="x_title">
+                                <h2 class="credentialing-sub-header">
+                                    <strong>Applicant Information</strong>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.practice_physical_address && vm.submitValidation }">Practice
+                                                Physical Address *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.practice_physical_address"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Suite Number *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.ppa_suite_number"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.ppa_city && vm.submitValidation }">City
+                                                *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.ppa_city" ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.ppa_state && vm.submitValidation }">State
+                                                *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.ppa_state"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.ppa_postal_code && vm.submitValidation }">Postal
+                                                Code *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.ppa_postal_code"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.years_on_location && vm.submitValidation }">1.
+                                                How Many Years Has the Practice Been at This Location *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.years_on_location"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.different_mailing_address && vm.submitValidation }">2.
+                                                Is the Mailing Address Different from Physical Address? If So, Please
+                                                List *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.different_mailing_address"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.name_printed_on_check && vm.submitValidation }">3.
+                                                Name to be Printed on Check *</label>
+                                            <input class="form-control" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.name_printed_on_check"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Please List All Owners and Percentage Owned. Please Start With
+                                                Highest Ownership Percentage.</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="x_panel custom_panel" ng-repeat="owner in vm.owners">
+                                            <div class="x_title form-group">
+                                                <label>Owner {{$index + 1}}</label>
+                                                <ul class="nav navbar-right panel_toolbox">
+                                                    <li>
+                                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                    </li>
+                                                </ul>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <div class="form-group navbar-right">
+                                                        <button ng-click="vm.deleteOwner($index)"
+                                                            class="btn btn-primary">
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.name && vm.submitValidation }">Name
+                                                            *</label>
+                                                        <input class="form-control" ng-change="vm.onChange()"
+                                                            ng-model="owner.name"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.email && vm.submitValidation }">Email
+                                                            *</label>
+                                                        <input class="form-control" ng-change="vm.onChange()"
+                                                            ng-model="owner.email"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.percent_owned && vm.submitValidation }">%
+                                                            Owned *</label>
+                                                        <input class="form-control" ng-change="vm.onChange()"
+                                                            ng-model="owner.percent_owned"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.dob && vm.submitValidation }">Date
+                                                            of Birth *</label>
+                                                        <input class="form-control" ng-change="vm.onChange()"
+                                                            ng-model="owner.dob"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.social_security_number && vm.submitValidation }">Social
+                                                            Security *</label>
+                                                        <input
+                                                            ui-mask="999999999"
+                                                            class="form-control"
+                                                            ng-change="vm.onChange()"
+                                                            ng-model="owner.social_security_number"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.address_line_1 && vm.submitValidation }">Home
+                                                            Address *</label>
+                                                        <input class="form-control" ng-change="vm.onChange()"
+                                                            ng-model="owner.address_line_1"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.city && vm.submitValidation }">City
+                                                            *</label>
+                                                        <input class="form-control" ng-change="vm.onChange()"
+                                                            ng-model="owner.city"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.state && vm.submitValidation }">State
+                                                            *</label>
+                                                        <input class="form-control" ng-change="vm.onChange()"
+                                                            ng-model="owner.state"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.postal_code && vm.submitValidation }">Postal
+                                                            Code *</label>
+                                                        <input class="form-control" ng-change="vm.onChange()"
+                                                            ng-model="owner.postal_code"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            ng-class="{ 'text-danger' : !owner.date_became_owner && vm.submitValidation }">Please
+                                                            list the date this owner became an owner *</label>
+                                                        <input class="form-control" ng-change="vm.onChange()"
+                                                            ng-model="owner.date_became_owner" placeholder="MM/DD/YYYY"
+                                                            ng-model-options="{ debounce: 1000 }" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <button ng-click="vm.addOwner()" class="btn btn-primary">Additional
+                                                    Owners</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label ng-class="{
+                                                  'text-danger' :
+                                                  !vm.customer.other_physician_1 && !vm.customer.other_physician_2 &&
+                                                  !vm.customer.other_physician_3 && !vm.customer.other_physician_4 &&
+                                                  !vm.customer.other_physician_5 && !vm.customer.other_physician_6 &&
+                                                  !vm.customer.other_physician_7 && !vm.customer.other_physician_8 &&
+                                                  !vm.customer.other_physician_9 && !vm.customer.other_physician_10 &&
+                                                  !vm.customer.other_physician_11 && !vm.customer.other_physician_1 &&
+                                                  vm.submitValidation
+                                                }">
+                                                Please List All Physicians Who Will Be Dispensing. *
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_1"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_2"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_3"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_4"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_5"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_6"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_7"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_8"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_9"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_10"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_11"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="form-control" ng-change="vm.onChange()"
+                                                    ng-model="vm.customer.other_physician_12"
+                                                    ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x_panel custom_panel">
+                            <div class="x_title">
+                                <h2 class="credentialing-sub-header">
+                                    <strong>Applicant Information</strong>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : !vm.customer.practice_description && vm.submitValidation }">Practice
+                                                Description (Coporation, Sole Proprietorship, Partnership) *</label>
+                                            <textarea class="form-control" rows="2" ng-change="vm.onChange()"
+                                                ng-model="vm.customer.practice_description"
+                                                ng-model-options="{ debounce: 1000 }" />
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="font-size: 15px">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            1. Under current ownership, has your clinic dispensary ever had its license revoked or suspended by the State Board or
+                                            by any other state or federal licensing authorities?
+                                        </p>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_license_ever_revoked" ng-value="true">Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_license_ever_revoked" ng-value="false">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            2. Is your practice in good standing with all state and federal licensing authorities, including the State Board?
+                                        </p>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_good_standing" ng-value="true">Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_good_standing" ng-value="false">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            3. Has your practice ever filed for bankruptcy or reorganization, under the current ownership?
+                                        </p>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_filed_for_bankruptcy" ng-value="true">Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_filed_for_bankruptcy" ng-value="false">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            4. Have any of the practice staff ever had their license revoked, suspended or disciplined by the State Board or
+                                            by any other state or federal licensing authorities?
+                                        </p>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_staff_license_ever_revoked" ng-value="true">Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_staff_license_ever_revoked" ng-value="false">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            5. Has the practice, its owner(s), principal(s) or any of its employees been the subject of a civil lawsuit or
+                                            criminal prosecution involving fraud, deceit, deception or a similar offense?
+                                        </p>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_lawsuit" ng-value="true">Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_lawsuit" ng-value="false">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            6. Has the practice or any of its employees been suspended or excluded by the Office of Inspector General (OIG) from
+                                            participating in any federal or state health care program or by the General Services Administration (GSA) from participating in
+                                            any government contracts/services?
+                                        </p>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_suspended" ng-value="true">Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_suspended" ng-value="false">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            7. Is the practice accessible by public transportation?
+                                        </p>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_public_transportation" ng-value="true">Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_public_transportation" ng-value="false">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            8. Is the practice less than 1/4 mile walking distance from public transportation?
+                                        </p>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_walking_distance" ng-value="true">Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_walking_distance" ng-value="false">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            9. Do you E-Prescribe?
+                                        </p>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_e_prescribe" ng-value="true">Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" ng-model="vm.customer.yn_e_prescribe" ng-value="false">No</label>
+                                        </div>
+                                        <div class="form-group" ng-if="vm.customer.yn_e_prescribe">
+                                          <label ng-class="{ 'text-danger' : !vm.customer.yn_e_prescribe_vendor && vm.submitValidation }">E-Presciber Vendor *</label>
+                                          <input class="form-control" ng-change="vm.onChange()" ng-model="vm.customer.yn_e_prescribe_vendor" ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            10. Please provide Medicaid number (If Applicable)
+                                        </p>
+                                        <div class="form-group">
+                                          <input class="form-control" ng-change="vm.onChange()" ng-model="vm.customer.yn_medicare_number" ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            11. Please list the percentage of Medicaid patients you see
+                                        </p>
+                                        <div class="form-group">
+                                          <input class="form-control" ng-change="vm.onChange()" ng-model="vm.customer.yn_medicaid_number" ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            12. Please provide Medicare number (If Applicable)
+                                        </p>
+                                        <div class="form-group">
+                                          <input class="form-control" ng-change="vm.onChange()" ng-model="vm.customer.yn_percent_medicare" ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <p>
+                                            13. Please list the percentage of Medicare patients you see
+                                        </p>
+                                        <div class="form-group">
+                                          <input class="form-control" ng-change="vm.onChange()" ng-model="vm.customer.yn_percent_medicaid" ng-model-options="{ debounce: 1000 }" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="x_panel custom_panel">
+                            <div class="x_title">
+                                <h2 class="credentialing-sub-header">
+                                    <strong>Supporting Documents</strong>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>All documents are required to complete PBM applications.  Please make sure all documents are up to date and do not expire within 30 days from the date of submission.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="form-group">
+                                            <label ng-class="{ 'text-danger' : vm.documents.medical_clinic_license.length == 0 && vm.submitValidation }">1. Medical / Clinic License (For All Prescribers) *</label>
+                                            <p>A copy of your doctors' medical license or clinic license if a clinic facility.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="dropzone dropzone-file-area apg-blue"
+                                                 class="drop-box"
+                                                 ngf-drag-over-class="'dragover'"
+
+                                                 ngf-drop="vm.uploadFiles($file, $invalidFiles, 'medical_clinic_license')"
+                                                 ngf-select="vm.uploadFiles($file, $invalidFiles, 'medical_clinic_license')">
+                                                <i class="fa fa-cloud" aria-hidden="true"></i>
+                                                <br>
+                                                <span>
+                                                    Drag & Drop a file
+                                                    <br> or load it by <u class="cursor-hand">clicking here</u>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12 col-xs-12" style="margin-bottom: 50px">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-3 col-sm-4" style="word-break: break-word; {{! $last ? 'border-right: .25px solid #eaeaea' : null}}" ng-repeat="document in vm.documents.medical_clinic_license">
+                                                    <div class="img-thumbnail-container">
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] === 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.medical_clinic_license', document.id)" ng-mouseover="vm.onHoverFiles('.medical_clinic_license', document.id, document.document_preview_url)" ngf-thumbnail="document.document_preview_url" class="img-thumbnail" />
+                                                        </div>
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] !== 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.medical_clinic_license', document.id)" ng-mouseover="vm.onHoverFiles('.medical_clinic_license', document.id, document.url)" ngf-thumbnail="document.url" class="img-thumbnail" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="img-thumbnail-name">
+                                                        <span>{{document.name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="{{document.url}}" class="btn btn-download btn-block" target="_blank" download>Download File</a>
+                                                        <a ng-click="vm.deleteCredentialingDocument(document.id)" class="btn btn-danger btn-block" type="button">Delete File</a>
+                                                    </div>
+                                                    <div class="hover-image-container medical_clinic_license-{{ document.id }} hidden" ng-mouseleave="vm.offHoverFiles('.medical_clinic_license', document.id)" ng-mouseover="vm.onHoverFiles('.medical_clinic_license', document.id, document.url)">
+                                                        <div class="dynamic-hover"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3" style="margin-bottom: 50px">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="form-group">
+                                            <label ng-class="{ 'text-danger' : vm.documents.pic_dea_license.length == 0 && vm.submitValidation }">2. DEA License (All Prescribers) *</label>
+                                            <p>Provide a copy of DEA License for all prescribers.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="dropzone dropzone-file-area apg-blue"
+                                                 class="drop-box"
+                                                 ngf-drag-over-class="'dragover'"
+
+                                                 ngf-drop="vm.uploadFiles($file, $invalidFiles, 'pic_dea_license')"
+                                                 ngf-select="vm.uploadFiles($file, $invalidFiles, 'pic_dea_license')">
+                                                <i class="fa fa-cloud" aria-hidden="true"></i>
+                                                <br>
+                                                <span>
+                                                    Drag & Drop a file
+                                                    <br> or load it by <u class="cursor-hand">clicking here</u>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12 col-xs-12" style="margin-bottom: 50px">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-3 col-sm-4" style="word-break: break-word; {{! $last ? 'border-right: .25px solid #eaeaea' : null}}" ng-repeat="document in vm.documents.pic_dea_license">
+                                                    <div class="img-thumbnail-container">
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] === 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.pic_dea_license', document.id)" ng-mouseover="vm.onHoverFiles('.pic_dea_license', document.id, document.document_preview_url)" ngf-thumbnail="document.document_preview_url" class="img-thumbnail" />
+                                                        </div>
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').  length - 1] !== 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.pic_dea_license', document.id)" ng-mouseover="vm.onHoverFiles('.pic_dea_license', document.id, document.url)" ngf-thumbnail="document.url" class="img-thumbnail" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="img-thumbnail-name">
+                                                        <span>{{document.name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="{{document.url}}" class="btn btn-download btn-block" target="_blank" download>Download File</a>
+                                                        <a ng-click="vm.deleteCredentialingDocument(document.id)" class="btn btn-danger btn-block" type="button">Delete File</a>
+                                                    </div>
+                                                    <div class="hover-image-container pic_dea_license-{{ document.id }} hidden" ng-mouseleave="vm.offHoverFiles('.pic_dea_license', document.id)" ng-mouseover="vm.onHoverFiles('.pic_dea_license', document.id, document.url)">
+                                                        <div class="dynamic-hover"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3" style="margin-bottom: 50px">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="form-group">
+                                            <label ng-class="{ 'text-danger' : vm.documents.federal_tax_id.length == 0 && vm.submitValidation }">3. Federal Tax ID *</label>
+                                            <p>A copy of your Federal Tax ID (EIN) letter sent by the IRS. (Form cannot be a W-9 or State Tax ID form.)
+                                                If you don't have a copy of your EIN/Federal Tax id confirmation letter, you may contact the IRS Business Tax Line at 1-800-829-4933.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="dropzone dropzone-file-area apg-blue"
+                                                 class="drop-box"
+                                                 ngf-drag-over-class="'dragover'"
+
+                                                 ngf-drop="vm.uploadFiles($file, $invalidFiles, 'federal_tax_id')"
+                                                 ngf-select="vm.uploadFiles($file, $invalidFiles, 'federal_tax_id')">
+                                                <i class="fa fa-cloud" aria-hidden="true"></i>
+                                                <br>
+                                                <span>
+                                                    Drag & Drop a file
+                                                    <br> or load it by <u class="cursor-hand">clicking here</u>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12 col-xs-12" style="margin-bottom: 50px">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-3 col-sm-4" style="word-break: break-word; {{! $last ? 'border-right: .25px solid #eaeaea' : null}}" ng-repeat="document in vm.documents.federal_tax_id">
+                                                    <div class="img-thumbnail-container">
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] === 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.federal_tax_id', document.id)" ng-mouseover="vm.onHoverFiles('.federal_tax_id', document.id, document.document_preview_url)" ngf-thumbnail="document.document_preview_url" class="img-thumbnail" />
+                                                        </div>
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] !== 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.federal_tax_id', document.id)" ng-mouseover="vm.onHoverFiles('.federal_tax_id', document.id, document.url)" ngf-thumbnail="document.url" class="img-thumbnail" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="img-thumbnail-name">
+                                                        <span>{{document.name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="{{document.url}}" class="btn btn-download btn-block" target="_blank" download>Download File</a>
+                                                        <a ng-click="vm.deleteCredentialingDocument(document.id)" class="btn btn-danger btn-block" type="button">Delete File</a>
+                                                    </div>
+                                                    <div class="hover-image-container federal_tax_id-{{ document.id }} hidden" ng-mouseleave="vm.offHoverFiles('.federal_tax_id', document.id)" ng-mouseover="vm.onHoverFiles('.federal_tax_id', document.id, document.url)">
+                                                        <div class="dynamic-hover"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3" style="margin-bottom: 50px">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="form-group">
+                                            <label ng-class="{ 'text-danger' : vm.documents.business_liability_insurance.length == 0 && vm.submitValidation }" class="document-name-hover" ng-mouseleave="vm.offHoverExample('.business')" ng-mouseover="vm.onHoverExample('.business')">4. Business Liability Insurance <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i> See Example *</label>
+                                            <p>A copy of your business liability insurance showing a minimum of $1,000,000 per occurrence and $3,000,000 aggregate coverages. Please make sure the current policy does not expire within 30 days.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="dropzone dropzone-file-area apg-blue"
+                                                 class="drop-box"
+                                                 ngf-drag-over-class="'dragover'"
+
+                                                 ngf-drop="vm.uploadFiles($file, $invalidFiles, 'business_liability_insurance')"
+                                                 ngf-select="vm.uploadFiles($file, $invalidFiles, 'business_liability_insurance')">
+                                                <i class="fa fa-cloud" aria-hidden="true"></i>
+                                                <br>
+                                                <span>
+                                                    Drag & Drop a file
+                                                    <br> or load it by <u class="cursor-hand">clicking here</u>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12 col-xs-12" style="margin-bottom: 50px">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-3 col-sm-4" style="word-break: break-word; {{! $last ? 'border-right: .25px solid #eaeaea' : null}}" ng-repeat="document in vm.documents.business_liability_insurance">
+                                                    <div class="img-thumbnail-container">
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] === 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.business_liability_insurance', document.id)" ng-mouseover="vm.onHoverFiles('.business_liability_insurance', document.id, document.document_preview_url)" ngf-thumbnail="document.document_preview_url" class="img-thumbnail" />
+                                                        </div>
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] !== 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.business_liability_insurance', document.id)" ng-mouseover="vm.onHoverFiles('.business_liability_insurance', document.id, document.url)" ngf-thumbnail="document.url" class="img-thumbnail" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="img-thumbnail-name">
+                                                        <span>{{document.name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="{{document.url}}" class="btn btn-download btn-block" target="_blank" download>Download File</a>
+                                                        <a ng-click="vm.deleteCredentialingDocument(document.id)" class="btn btn-danger btn-block" type="button">Delete File</a>
+                                                    </div>
+                                                    <div class="hover-image-container business_liability_insurance-{{ document.id }} hidden" ng-mouseleave="vm.offHoverFiles('.business_liability_insurance', document.id)" ng-mouseover="vm.onHoverFiles('.medical_clinic_license', document.id, document.url)">
+                                                        <div class="dynamic-hover"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3" style="margin-bottom: 50px">
+                                    </div>
+                                    <div class="hover-image-container business hidden">
+                                        <div class="business-liability">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="form-group">
+                                            <label ng-class="{ 'text-danger' : vm.documents.professional_liability_insurance.length == 0 && vm.submitValidation }" class="document-name-hover" ng-mouseleave="vm.offHoverExample('.professional')" ng-mouseover="vm.onHoverExample('.professional')">5. Professional Liability Insurance <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i> See Example *</label>
+                                            <p>A copy of your professional liability insurance showing a minimum of $1,000,000 per occurrence and $3,000,000 aggregate coverages. Please make sure the current policy does not expire within 30 days.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="dropzone dropzone-file-area apg-blue"
+                                                 class="drop-box"
+                                                 ngf-drag-over-class="'dragover'"
+
+                                                 ngf-drop="vm.uploadFiles($file, $invalidFiles, 'professional_liability_insurance')"
+                                                 ngf-select="vm.uploadFiles($file, $invalidFiles, 'professional_liability_insurance')">
+                                                <i class="fa fa-cloud" aria-hidden="true"></i>
+                                                <br>
+                                                <span>
+                                                    Drag & Drop a file
+                                                    <br> or load it by <u class="cursor-hand">clicking here</u>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12 col-xs-12" style="margin-bottom: 50px">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-3 col-sm-4" style="word-break: break-word; {{! $last ? 'border-right: .25px solid #eaeaea' : null}}" ng-repeat="document in vm.documents.professional_liability_insurance">
+                                                    <div class="img-thumbnail-container">
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] === 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.professional_liability_insurance', document.id)" ng-mouseover="vm.onHoverFiles('.professional_liability_insurance', document.id, document.document_preview_url)" ngf-thumbnail="document.document_preview_url" class="img-thumbnail" />
+                                                        </div>
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] !== 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.professional_liability_insurance', document.id)" ng-mouseover="vm.onHoverFiles('.professional_liability_insurance', document.id, document.url)" ngf-thumbnail="document.url" class="img-thumbnail" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="img-thumbnail-name">
+                                                        <span>{{document.name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="{{document.url}}" class="btn btn-download btn-block" target="_blank" download>Download File</a>
+                                                        <a ng-click="vm.deleteCredentialingDocument(document.id)" class="btn btn-danger btn-block" type="button">Delete File</a>
+                                                    </div>
+                                                    <div class="hover-image-container professional_liability_insurance-{{ document.id }} hidden" ng-mouseleave="vm.offHoverFiles('.professional_liability_insurance', document.id)" ng-mouseover="vm.onHoverFiles('.medical_clinic_license', document.id, document.url)">
+                                                        <div class="dynamic-hover"></div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3" style="margin-bottom: 50px">
+                                    </div>
+                                    <div class="hover-image-container professional hidden">
+                                        <div class="professional-liability">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="form-group">
+                                            <label ng-class="{ 'text-danger' : vm.documents.owner_pic_drivers_license.length == 0 && vm.submitValidation }">6. Drivers License for PIC *</label>
+                                            <p>Provide a photocopy of the Physician In Charge drivers license.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="dropzone dropzone-file-area apg-blue"
+                                                 class="drop-box"
+                                                 ngf-drag-over-class="'dragover'"
+
+                                                 ngf-drop="vm.uploadFiles($file, $invalidFiles, 'owner_pic_drivers_license')"
+                                                 ngf-select="vm.uploadFiles($file, $invalidFiles, 'owner_pic_drivers_license')">
+                                                <i class="fa fa-cloud" aria-hidden="true"></i>
+                                                <br>
+                                                <span>
+                                                    Drag & Drop a file
+                                                    <br> or load it by <u class="cursor-hand">clicking here</u>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12 col-xs-12" style="margin-bottom: 50px">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-3 col-sm-4" style="word-break: break-word; {{! $last ? 'border-right: .25px solid #eaeaea' : null}}" ng-repeat="document in vm.documents.owner_pic_drivers_license">
+                                                    <div class="img-thumbnail-container">
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] === 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.owner_pic_drivers_license', document.id)" ng-mouseover="vm.onHoverFiles('.owner_pic_drivers_license', document.id, document.document_preview_url)" ngf-thumbnail="document.document_preview_url" class="img-thumbnail" />
+                                                        </div>
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').  length - 1] !== 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.owner_pic_drivers_license', document.id)" ng-mouseover="vm.onHoverFiles('.owner_pic_drivers_license', document.id, document.url)" ngf-thumbnail="document.url" class="img-thumbnail" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="img-thumbnail-name">
+                                                        <span>{{document.name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="{{document.url}}" class="btn btn-download btn-block" target="_blank" download>Download File</a>
+                                                        <a ng-click="vm.deleteCredentialingDocument(document.id)" class="btn btn-danger btn-block" type="button">Delete File</a>
+                                                    </div>
+                                                    <div class="hover-image-container owner_pic_drivers_license-{{ document.id }} hidden" ng-mouseleave="vm.offHoverFiles('.owner_pic_drivers_license', document.id)" ng-mouseover="vm.onHoverFiles('.owner_pic_drivers_license', document.id, document.url)">
+                                                        <div class="dynamic-hover"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3" style="margin-bottom: 50px">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="form-group">
+                                            <label>7. Articles of Incorporation</label>
+                                            <p>
+                                                A copy of the practice's State Aritcles of Incorporation.
+                                                Articles of Incorporation must list the date each owner became an owner.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="dropzone dropzone-file-area apg-blue" class="drop-box" ngf-drag-over-class="'dragover'"
+                                                ngf-drop="vm.uploadFiles($file, $invalidFiles, 'articles_of_incorporation')"
+                                                ngf-select="vm.uploadFiles($file, $invalidFiles, 'articles_of_incorporation')">
+                                                <i class="fa fa-cloud" aria-hidden="true"></i>
+                                                <br>
+                                                <span>
+                                                    Drag & Drop a file
+                                                    <br> or load it by <u class="cursor-hand">clicking here</u>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12 col-xs-12" style="margin-bottom: 50px">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-3 col-sm-4"
+                                                    style="word-break: break-word; {{! $last ? 'border-right: .25px solid #eaeaea' : null}}"
+                                                    ng-repeat="document in vm.documents.articles_of_incorporation">
+                                                    <div class="img-thumbnail-container">
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] === 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.articles_of_incorporation', document.id)" ng-mouseover="vm.onHoverFiles('.articles_of_incorporation', document.id, document.document_preview_url)" ngf-thumbnail="document.document_preview_url" class="img-thumbnail" />
+                                                        </div>
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] !== 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.articles_of_incorporation', document.id)" ng-mouseover="vm.onHoverFiles('.articles_of_incorporation', document.id, document.url)" ngf-thumbnail="document.url" class="img-thumbnail" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="img-thumbnail-name">
+                                                        <span>{{document.name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="{{document.url}}" class="btn btn-download btn-block" target="_blank" download>Download
+                                                            File</a>
+                                                        <a ng-click="vm.deleteCredentialingDocument(document.id)" class="btn btn-danger btn-block"
+                                                            type="button">Delete File</a>
+                                                    </div>
+                                                    <div class="hover-image-container articles_of_incorporation-{{ document.id }} hidden"
+                                                        ng-mouseleave="vm.offHoverFiles('.articles_of_incorporation', document.id)"
+                                                        ng-mouseover="vm.onHoverFiles('.articles_of_incorporation', document.id, document.url)">
+                                                        <div class="dynamic-hover"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3" style="margin-bottom: 50px"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <div class="form-group">
+                                            <label
+                                                ng-class="{ 'text-danger' : vm.documents.owners_state_issued_driver_license.length == 0 && vm.submitValidation }">8.
+                                                Drivers License for Owners *</label>
+                                            <p>Provide a photocopy of all owners drivers license.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="dropzone dropzone-file-area apg-blue" class="drop-box" ngf-drag-over-class="'dragover'"
+                                                ngf-drop="vm.uploadFiles($file, $invalidFiles, 'owners_state_issued_driver_license')"
+                                                ngf-select="vm.uploadFiles($file, $invalidFiles, 'owners_state_issued_driver_license')">
+                                                <i class="fa fa-cloud" aria-hidden="true"></i>
+                                                <br>
+                                                <span>
+                                                    Drag & Drop a file
+                                                    <br> or load it by <u class="cursor-hand">clicking here</u>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-12 col-xs-12" style="margin-bottom: 50px">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-3 col-sm-4"
+                                                    style="word-break: break-word; {{! $last ? 'border-right: .25px solid #eaeaea' : null}}"
+                                                    ng-repeat="document in vm.documents.owners_state_issued_driver_license">
+                                                    <div class="img-thumbnail-container">
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] === 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.owners_state_issued_driver_license', document.id)" ng-mouseover="vm.onHoverFiles('.owners_state_issued_driver_license', document.id, document.document_preview_url)" ngf-thumbnail="document.document_preview_url" class="img-thumbnail" />
+                                                        </div>
+                                                        <div ng-if="document.name.split('.')[document.name.split('.').length - 1] !== 'pdf'">
+                                                            <img ng-mouseleave="vm.offHoverFiles('.owners_state_issued_driver_license', document.id)" ng-mouseover="vm.onHoverFiles('.owners_state_issued_driver_license', document.id, document.url)" ngf-thumbnail="document.url" class="img-thumbnail" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="img-thumbnail-name">
+                                                        <span>{{document.name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="{{document.url}}" class="btn btn-download btn-block" target="_blank" download>Download
+                                                            File</a>
+                                                        <a ng-click="vm.deleteCredentialingDocument(document.id)" class="btn btn-danger btn-block"
+                                                            type="button">Delete File</a>
+                                                    </div>
+                                                    <div class="hover-image-container owners_state_issued_driver_license-{{ document.id }} hidden"
+                                                        ng-mouseleave="vm.offHoverFiles('.owners_state_issued_driver_license', document.id)"
+                                                        ng-mouseover="vm.onHoverFiles('.owners_state_issued_driver_license', document.id, document.url)">
+                                                        <div class="dynamic-hover"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3" style="margin-bottom: 50px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="vm.errors.length > 0">
+                            <div class="col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="text-danger">
+                                        Please fill out all required fields/documents
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <ul ng-repeat="error in vm.errors" style="padding-left: 20px">
+                                        <li class="text-danger">{{ error }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x_panel custom_panel">
+                            <div class="x_content">
+                                <button ng-click="vm.submit()" class="btn btn-primary" ng-disabled="vm.validateSubmitButton">Submit</button>
+                                <button class="btn btn-info" ui-sref="customers">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->
+<!-- begin olark code -->
+<script type="text/javascript" async> ; (function (o, l, a, r, k, y) { if (o.olark) return; r = "script"; y = l.createElement(r); r = l.getElementsByTagName(r)[0]; y.async = 1; y.src = "//" + a; r.parentNode.insertBefore(y, r); y = o.olark = function () { k.s.push(arguments); k.t.push(+new Date) }; y.extend = function (i, j) { y("extend", i, j) }; y.identify = function (i) { y("identify", k.i = i) }; y.configure = function (i, j) { y("configure", i, j); k.c[i] = j }; k = y._ = { s: [], t: [+new Date], c: {}, l: a }; })(window, document, "static.olark.com/jsclient/loader.js");
+    /* custom configuration goes here (www.olark.com/documentation) */
+    olark.configure('system.is_single_page_application', true);
+    olark.identify('7835-489-10-1094');</script>
+<!-- end olark code -->

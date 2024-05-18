@@ -1,0 +1,12 @@
+<div class="cofirm-delete-modal">
+    <div class="modal-header">
+        <h3 class="modal-title">{{vm.messagesData.title}}</h3>
+    </div>
+    <div class="modal-body">
+        <div>{{vm.messagesData.message}}</div>
+    </div>
+    <div class="modal-footer apg-form">
+        <button type="button" class="btn btn-default" ng-click="vm.dismissModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.closeModal()">Yes, {{vm.messagesData.action}}</button>
+    </div>
+</div>

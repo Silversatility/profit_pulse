@@ -1,0 +1,19 @@
+.profile .dropdown {
+    margin: 0 5px 5px 0;
+}
+
+.profile .x_panel .x_title h3 {
+    display: inline-block;
+}
+
+.profile .x_panel .x_title .panel_toolbox {
+    margin-top: 17px;
+}
+
+.profile .input-group .input-group-addon {
+    display: table-cell !important;
+}
+
+.profile .error {
+    color: red;
+}

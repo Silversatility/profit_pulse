@@ -1,0 +1,18 @@
+[
+{
+    "model": "oauth2_provider.application",
+    "pk": 1,
+    "fields": {
+        "client_id": "doR5Ud4nkDT1rfFxFr3NAuLYAxw7pPBfGRMeZ6IE",
+        "user": null,
+        "redirect_uris": "",
+        "client_type": "confidential",
+        "authorization_grant_type": "password",
+        "client_secret": "yrKvlALB32JR8bHAiCZEpWZmaYm9bY4fQyjlKSGK350wjwV63j4qwiyHmETkceLqmnnHY4VRgRGkCOdSDrgD4usHagjiHd2TIiL63Ikegf6tLMKOTLo5kTgLQz7donk5",
+        "name": "",
+        "skip_authorization": false,
+        "created": "2018-12-02T05:56:04.714Z",
+        "updated": "2018-12-02T05:56:04.714Z"
+    }
+}
+]

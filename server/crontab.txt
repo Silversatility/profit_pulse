@@ -1,0 +1,3 @@
+SHELL=/bin/bash
+
+* * * * * source /home/ubuntu/.env && source /home/ubuntu/.virtualenvs/profit_pulse/bin/activate && run-one /home/ubuntu/profit_pulse/manage.py trigger_import

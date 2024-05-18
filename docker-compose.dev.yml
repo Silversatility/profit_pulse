@@ -1,0 +1,62 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:9.6.5
+    restart: always
+    volumes:
+      - ./config/postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: .env
+    expose:
+      - "5432"
+
+  web:
+    build: .
+    command: "bash -c 'pip3 install -r requirements.txt && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000'"
+    volumes:
+      - .:/profit_pulse
+    environment:
+      - AWS_SECRET_ACCESS_KEY=8Z+TmowQdDQ9YCU92hPxPguj8XHMxOblN2cIBm3+
+      - AWS_ACCESS_KEY_ID=AKIA32BEOEJEJV7VB742
+      - AWS_STORAGE_BUCKET_NAME=apglabs-datascan-prod
+      - AWS_S3_BUCKET_DATA_SCAN=apglabs-datascan-prod
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    links:
+      - db:db
+      - redis:redis
+    stdin_open: true
+    tty: true
+
+  redis:
+    image: "redis:4.0-alpine"
+    command: "redis-server --stop-writes-on-bgsave-error no"
+    ports:
+      - "6380:6379"
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    command: "bash -c './node_bootstrap.sh watch:local'"
+    volumes:
+      - .:/profit_pulse
+
+  static:
+    build: .
+    command: bash -c "cd ./frontend/ && python3 -m http.server 8001"
+    volumes:
+      - .:/profit_pulse
+    ports:
+      - "8001:8001"
+    depends_on:
+      - node
+    links:
+      - node:node
+
+volumes:
+  postgres_data:

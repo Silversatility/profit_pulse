@@ -1,0 +1,80 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="profitability">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Profitability</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <div class="btn-group" uib-dropdown>
+                                <button type="button" class="btn btn-default" uib-dropdown-toggle>
+                                    {{vm.filter.name}} <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                                    <li role="menuitem" ng-repeat="item in vm.filterResource" ng-class="{'active': vm.filter.value == item.value}">
+                                        <a ng-click="vm.changeFilter(item)">{{item.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content" ng-show="vm.profitabilityData.length">
+                    <canvas class="chart chart-line m-b-20" chart-data="vm.profitabilityChart.data" chart-labels="vm.profitabilityChart.labels"
+                            chart-options="vm.profitabilityChart.chart_options" chart-dataset-override="vm.profitabilityChart.datasetOverride"
+                            chart-series="vm.profitabilityChart.series" height="70" chart-colors="vm.profitabilityChart.colors"></canvas>
+                </div>
+
+                <div class="x_content" ng-show="!vm.profitabilityData.length">
+                    <h4 class="text-center m-b-20">No Profit Data</h4>
+                </div>
+
+                <div class="x_title">
+                    <h3>Physician Overview</h3>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <table class="table table-striped table-bordered dataTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th class="text-center">Today</th>
+                                <th class="text-center">Week</th>
+                                <th class="text-center">Month</th>
+                                <th class="text-center">YTD</th>
+                                <th class="text-center">LYTD</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-if="vm.physicianOverview.length">
+                            <tr ng-repeat="item in vm.physicianOverview">
+                                <td>{{item.name}}</td>
+                                <td class="text-center">${{item.profit_today}}</td>
+                                <td class="text-center">${{item.profit_this_week}}</td>
+                                <td class="text-center">${{item.profit_this_month}}</td>
+                                <td class="text-center">${{item.profit_year_to_date}}</td>
+                                <td class="text-center">${{item.profit_last_year_to_date}}</td>
+                            </tr>
+                        </tbody>
+                        <tbody ng-if="!vm.physicianOverview.length">
+                            <tr>
+                                <td colspan="6" class="text-center">No Physicians...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

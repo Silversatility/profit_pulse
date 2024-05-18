@@ -1,0 +1,197 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="dashboard">
+    <div class="row tile_count" ng-if="vm.customer.show_fees">
+        <div class="col-md-2 col-sm-6 col-xs-6 tile_stats_count" >
+            <span class="count_top">Total Paid</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.total_paid) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-6 tile_stats_count">
+            <span class="count_top">Profit</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.margin) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top">Maintenance Fees</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.maintenance_fees) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top">Net Profit</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.net_profit) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-6 tile_stats_count">
+            <span class="count_top">Drugs Dispensed</span>
+            <div class="count">{{vm.reports.dispense_count}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-6 tile_stats_count">
+            <span class="count_top">Products Dispensed</span>
+            <div class="count">{{vm.reports.products_count}}</div>
+            <span class="count_bottom"></span>
+        </div>
+    </div>
+
+    <div class="row tile_count" ng-if="!vm.customer.show_fees">
+        <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+            <span class="count_top">Total Paid</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.total_paid) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+            <span class="count_top">Profit</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.margin) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+            <span class="count_top">Drugs Dispensed</span>
+            <div class="count">{{vm.reports.dispense_count}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+            <span class="count_top">Products Dispensed</span>
+            <div class="count">{{vm.reports.products_count}}</div>
+            <span class="count_bottom"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md=12 col-sm-12 col-xs-12">
+            <div class="dashboard_graph">
+                <div class="row x_title">
+                    <div class="col-md-6">
+                        <h3>Profit</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group pull-right" uib-dropdown>
+                            <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+                                {{vm.filter.name}} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                <li role="menuitem" ng-repeat="item in vm.filterResource" ng-class="{'active': vm.filter.value == item.value}">
+                                    <a ng-click="vm.changeFilter(item)">{{item.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="flot_graph" ng-show="vm.totalProfits.length">
+                        <canvas id="flot" class="chart chart-line" chart-data="vm.totalProfitsChart.data" chart-labels="vm.totalProfitsChart.labels"
+                                chart-series="vm.totalProfitsChart.series" chart-options="vm.totalProfitsChart.options"
+                                chart-dataset-override="vm.totalProfitsChart.datasetOverride" height="85" chart-colors="['#8ff7ff']"></canvas>
+                    </div>
+                    <h4 class="text-center" ng-show="!vm.totalProfits.length">No Profit Data</h4>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                    <div class="col-md-12 col-sm-12 col-xs-6">
+                        <div>
+                            <p>Total Paid <span>(${{vm.getNumberFromString(vm.reports.total_paid) / 1000 | number:0}}k)</span></p>
+                            <div class="progress progress_sm">
+                                <uib-progressbar value="vm.revenueSum ? vm.getNumberFromString(vm.reports.total_paid) / vm.revenueSum * 100 : 0"></uib-progressbar>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Profit <span>(${{vm.getNumberFromString(vm.reports.margin) / 1000 | number:0}}k)</span></p>
+                            <div class="progress progress_sm">
+                                <uib-progressbar value="vm.revenueSum ? vm.getNumberFromString(vm.reports.margin) / vm.revenueSum * 100 : 0"></uib-progressbar>
+                            </div>
+                        </div>
+                        <div ng-if="vm.customer.show_fees">
+                            <p>Maintenance Fees <span>(${{vm.getNumberFromString(vm.reports.maintenance_fees) / 1000 | number:0}}k)</span></p>
+                            <div class="progress progress_sm">
+                                <uib-progressbar value="vm.revenueSum ? vm.getNumberFromString(vm.reports.maintenance_fees) / vm.revenueSum * 100 : 0"></uib-progressbar>
+                            </div>
+                        </div>
+                        <div ng-if="vm.customer.show_fees">
+                            <p>Net Profit <span>(${{vm.getNumberFromString(vm.reports.net_profit) / 1000 | number:0}}k)</span></p>
+                            <div class="progress progress_sm">
+                                <uib-progressbar value="vm.revenueSum ? vm.getNumberFromString(vm.reports.net_profit) / vm.revenueSum * 100 : 0"></uib-progressbar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="x_panel tile fixed_height_350">
+                <div class="x_title">
+                    <h2>My Top Performing Products</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.myTopProducts.length">
+                    <div class="graph_area">
+                        <canvas class="chart chart-doughnut" chart-data="vm.myProductsChart.data" chart-labels="vm.myProductsChart.labels"
+                                chart-colors="vm.myProductsChart.colors" chart-options="vm.myProductsChart.options" height="180"></canvas>
+                    </div>
+                    <div class="legend_area">
+                        <div class="legend_container">
+                            <p ng-repeat="label in vm.myProductsChart.labels">
+                                <i class="fa fa-square" ng-style="{'color': vm.myProductsChart.colors[$index]}"></i>
+                                {{label}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_content" ng-show="!vm.myTopProducts.length">
+                    <h4 class="text-center">No Products Data</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="x_panel tile fixed_height_350">
+                <div class="x_title">
+                    <h2>Top 5 Performing Products Nationally</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.topProducts.length">
+                    <div class="graph_area">
+                        <canvas class="chart chart-doughnut" chart-data="vm.productsChart.data" chart-labels="vm.productsChart.labels"
+                                chart-colors="vm.productsChart.colors" chart-options="vm.productsChart.options" height="180"></canvas>
+                    </div>
+                    <div class="legend_area">
+                        <div class="legend_container">
+                            <p ng-repeat="label in vm.productsChart.labels">
+                                <i class="fa fa-square" ng-style="{'color': vm.productsChart.colors[$index]}"></i>
+                                {{label}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_content" ng-show="!vm.topProducts.length">
+                    <h4 class="text-center">No Products Data</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel tile">
+                <div class="x_title">
+                    <h2>Individual Profit</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.topPhysicians.length">
+                    <canvas class="chart chart-bar" chart-data="vm.profitabilityChart.data" chart-labels="vm.profitabilityChart.labels" chart-series="vm.profitabilityChart.series"
+                            chart-options="vm.profitabilityChart.options" chart-dataset-override="vm.profitabilityChart.datasetOverride" height="50" chart-colors="vm.productsChart.colors"></canvas>
+                </div>
+                <div class="x_content" ng-show="!vm.topPhysicians.length">
+                    <h4 class="text-center">No Profit Data</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

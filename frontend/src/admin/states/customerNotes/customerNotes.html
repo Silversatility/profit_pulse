@@ -1,0 +1,39 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="customers customer-edit">
+    <div class="page-title">
+        <div class="title_left" style="width: 100%;">
+            <h3>Customer Notes: {{vm.customerName}}</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <form ng-submit="vm.save()" name="customerForm" novalidate>
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>Notes</label>
+                                    <textarea class="form-control" rows="4" ng-model="vm.editableData.notes" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-info" ui-sref="customers">Back</button>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <button type="submit" class="btn btn-primary" ng-disabled="customerForm.$invalid">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

@@ -1,0 +1,18 @@
+.custom-modal.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .custom-modal.modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.custom-modal .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}

@@ -1,0 +1,65 @@
+<!-- BEGIN SIDEBAR -->
+<div class="left_col scroll-view">
+    <div class="navbar nav_title">
+        <a ui-sref="dashboard" class="site_title">
+            <img src="../../../assets/images/id.png" class="collapse-image" alt="Logo" />
+            <img src="../../../assets/images/idispense.png" class="expand-image" alt="Logo" />
+        </a>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+            <ul class="nav side-menu">
+                <li>
+                    <a ui-sref="dashboard"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li>
+                    <a ui-sref="credentialing"><i class="fa fa-graduation-cap"></i> Credentialing</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /sidebar menu -->
+
+</div>
+<!-- END SIDEBAR -->
+
+<style>
+    .nav_title {
+        border: 0;
+        height: 70px;
+        background: #ffffff;
+    }
+
+    .nav_title .site_title {
+        height: 100%;
+    }
+
+    .nav-md .nav_title .site_title {
+        padding: 0 0 5px;
+    }
+
+    .nav-sm .nav_title .site_title {
+        padding: 5px 10px 5px 17px
+    }
+
+    .nav_title .site_title img {
+        height: 100%;
+    }
+
+    .nav-md .nav_title .site_title .collapse-image {
+        display: none;
+    }
+
+    .nav-sm .nav_title .site_title .expand-image {
+        display: none;
+    }
+
+    .nav-md .menu_section {
+        padding: 0 10px;
+    }
+
+</style>

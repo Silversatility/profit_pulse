@@ -1,0 +1,74 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <div class="title-search">
+        <h1 class="page-title col-md-6"> Profit Report
+        </h1>
+        <div class="col-md-3">
+             <input
+                 type="text"
+                 class="form-control input-group date-picker calendar-icon"
+                 uib-datepicker-popup="M!/d!/yyyy"
+                 ng-model="vm.datepickerDate.startDate"
+                 placeholder="Start Date"
+                 is-open="vm.startDateOpened"
+                 ng-focus="vm.openStartDate()"
+                 ng-change="vm.fetch()"/>
+        </div>
+        <div class="col-md-3">
+             <input
+                 type="text"
+                 class="form-control input-group date-picker calendar-icon"
+                 uib-datepicker-popup="M!/d!/yyyy"
+                 ng-model="vm.datepickerDate.endDate"
+                 placeholder="End Date"
+                 is-open="vm.endDateOpened"
+                 ng-focus="vm.openEndDate()"
+                 ng-change="vm.fetch()"/>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box">
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="text-center" sorted-column="vm.sortParameters" sorted-field="practice_name" update-function="vm.fetch()">Practice Name</th>
+                                <th sorted-column="vm.sortParameters" sorted-field="collection_gross_revenue" update-function="vm.fetch()">Collection Profit</th>
+                                <th sorted-column="vm.sortParameters" sorted-field="transaction_fee" update-function="vm.fetch()">Transaction Fee Profit</th>
+                                <th class="text-center" sorted-column="vm.sortParameters" sorted-field="monthly_maintenance_fee" update-function="vm.fetch()">Monthly Maintenance Fee Profit</th>
+                                <th class="text-center" sorted-column="vm.sortParameters" sorted-field="total_revenue" update-function="vm.fetch()">Total Profit</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in vm.items">
+                                <td>{{ item.business_name}}</td>
+                                <td class="text-right">${{ item.gross_profit }}</td>
+                                <td class="text-right">${{ item.transaction_fee_profit }}</td>
+                                <td class="text-right">${{ item.maintenance_fee_profit }}</td>
+                                <td class="text-right">${{ item.total_profit }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center" ng-if="vm.items.length > 0">
+                        <ul uib-pagination total-items="vm.pagination.count"
+                            ng-model="vm.pagination.page"
+                            max-size="vm.pagination.maxSize"
+                            class="pagination-sm"
+                            boundary-links="true"
+                            num-pages="vm.pagination.numPages"
+                            items-per-page="vm.pagination.limit" ng-change="vm.pageChanged()">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- END CONTENT BODY -->

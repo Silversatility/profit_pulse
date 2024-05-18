@@ -1,0 +1,11 @@
+.profile .x_panel .x_title h3 {
+    display: inline-block;
+}
+
+.profile .x_panel .x_title .panel_toolbox {
+    margin-top: 17px;
+}
+
+.profile .error {
+    color: red;
+}

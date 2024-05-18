@@ -1,0 +1,2 @@
+class InvalidWebHookEvent(Exception):
+    pass

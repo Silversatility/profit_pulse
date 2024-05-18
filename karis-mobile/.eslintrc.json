@@ -1,0 +1,36 @@
+{
+    "env": {
+        "browser": true,
+        "jest": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly",
+        "__DEV__": "readonly"
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+
+    "rules": {
+      "semi": ["error", "always"],
+      "object-curly-spacing": ["error", "always"],
+      "lines-between-class-members": ["error", "always"],
+      "no-unused-vars": ["error", { "args": "none" }],
+      "no-console": "off",
+      "react/prop-types": "off",
+      "react/display-name": "off",
+      "react/jsx-uses-vars": "error"
+    }
+}

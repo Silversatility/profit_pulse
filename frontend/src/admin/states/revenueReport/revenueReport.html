@@ -1,0 +1,85 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="revenue_report">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Revenue Report</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <div class="date_picker">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="M!/d!/yyyy" ng-model="vm.datepickerDate.startDate" placeholder="Start Date"
+                                           is-open="vm.startDateOpened" ng-focus="vm.openStartDate()" ng-change="vm.fetch()" popup-placement="bottom-right" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.openStartDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="date_picker">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="M!/d!/yyyy" ng-model="vm.datepickerDate.endDate" placeholder="End Date"
+                                           is-open="vm.endDateOpened" ng-focus="vm.openEndDate()" ng-change="vm.fetch()" popup-placement="bottom-right" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.openEndDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <table class="table table-striped table-bordered dataTable">
+                        <thead>
+                            <tr>
+                                <th sorted-column="vm.sortParameters" sorted-field="business_name" update-function="vm.fetch()">Practice Name</th>
+                                <th sorted-column="vm.sortParameters" sorted-field="transaction_fee" update-function="vm.fetch()">Transaction Fee</th>
+                                <th sorted-column="vm.sortParameters" sorted-field="enrollment_fee" update-function="vm.fetch()">Enrollment Fee</th>
+                                <th sorted-column="vm.sortParameters" sorted-field="maintenance_fee" update-function="vm.fetch()">Software Fee</th>
+                                <th sorted-column="vm.sortParameters" sorted-field="switching_charges" update-function="vm.fetch()">Switching Charges</th>
+                                <th sorted-column="vm.sortParameters" sorted-field="total_revenue" update-function="vm.fetch()">Total Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-if="vm.items.length">
+                            <tr ng-repeat="item in vm.items">
+                                <td>{{ item.business_name }}</td>
+                                <td>{{ item.transaction_fee | currency }}</td>
+                                <td>{{ item.enrollment_fee | currency }}</td>
+                                <td>{{ item.maintenance_fee | currency }}</td>
+                                <td>{{ item.switching_charges | currency }}</td>
+                                <td>{{ item.total_revenue | currency }}</td>
+                            </tr>
+                        </tbody>
+                        <tbody ng-if="!vm.items.length">
+                            <tr>
+                                <td colspan="6" class="text-center">No Revenue Report...</td>
+                            </tr>
+                        </tbody>
+                        <tfoot ng-if="vm.items.length">
+                            <tr>
+                                <th>TOTAL:</th>
+                                <th>{{ vm.totals.transaction_fee | currency }}</th>
+                                <th>{{ vm.totals.enrollment_fee | currency }}</th>
+                                <th>{{ vm.totals.maintenance_fee | currency }}</th>
+                                <th>{{ vm.totals.switching_charges | currency }}</th>
+                                <th>{{ vm.totals.total_revenue | currency }}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

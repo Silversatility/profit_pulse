@@ -1,0 +1,81 @@
+.customers .title_left {
+    margin: 10px 0;
+}
+
+.customers .dropdown {
+    margin: 0 5px 5px 0;
+}
+
+.customers .dropdown-menu.add-customer {
+    width: 400px;
+    padding: 10px 15px;
+}
+
+.customers .dropdown-menu.add-customer .portal-access > button {
+    float: left;
+}
+
+.customers .dropdown-menu.add-customer .portal-access > span {
+    float: left;
+    font-size: 14px;
+    line-height: 22px;
+    margin-left: 5px;
+    color: #555;
+}
+
+.customers .btn-add {
+    margin-right: 0;
+    padding: 6px 12px;
+    color: #000000;
+}
+
+.customers table.dataTable {
+    margin-bottom: 0;
+}
+
+.customers table.dataTable th {
+    position: relative;
+    padding-right: 20px !important;
+    cursor: pointer;
+}
+
+.customers table.dataTable th i {
+    position: absolute;
+    top: 10px;
+    right: 6px;
+}
+
+.customers .pagination-info {
+    margin: 10px 0;
+    line-height: 30px;
+}
+
+.customers .pagination {
+    margin: 10px 0;
+}
+
+.customer-edit .x_panel .x_title h3 {
+    display: inline-block;
+}
+
+.customer-edit .x_panel .x_title .panel_toolbox {
+    margin-top: 17px;
+}
+
+.customer-edit .date_picker .input-group > .input-group-btn .btn {
+    margin-right: 0;
+}
+
+.customer-edit .date_picker .uib-daypicker table thead .btn {
+    margin-bottom: 5px;
+    margin-right: 0;
+}
+
+.customer-edit .date_picker .uib-daypicker table tbody .btn {
+    margin-bottom: 0;
+    padding: 0 5px;
+}
+
+.customer-edit .date_picker .uib-button-bar .btn {
+    margin-bottom: 5px;
+}

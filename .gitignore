@@ -1,0 +1,26 @@
+*.pyc
+*.db
+*.db-journal
+*~
+.DS_Store
+.pytest_cache
+
+# virtual environments
+.env
+.idea
+env
+
+frontend/dist/
+
+*.pem
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+celerybeat-schedule
+celerybeat.pid
+server/gunicorn.pid
+
+npm-debug.log

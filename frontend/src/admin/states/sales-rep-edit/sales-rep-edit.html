@@ -1,0 +1,113 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="sales-reps sale-edit">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Sales Rep: {{vm.oldSalesName}}</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h3>Edit Profile</h3>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <strong>Date Created:</strong> <span>{{vm.salesInfo.user.created | date}}</span>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <form ng-submit="vm.save()" name="salesFormEdit" novalidate>
+                        <div class="row m-b-10">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="vm.salesInfo.user.first_name" placeholder="First Name" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="vm.salesInfo.user.last_name" placeholder="Last Name" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" ng-class="{ 'has-error' : salesFormEdit.email.$invalid && !salesFormEdit.email.$pristine }"
+                                           name="email" type="email" ng-model="vm.salesInfo.user.email" placeholder="(*) Email Address" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="phone" ng-model="vm.salesInfo.phone_number" maxlength="14" placeholder="Phone Number" ui-us-phone-number-mask />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="vm.salesInfo.street_address" placeholder="Street Address" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="vm.salesInfo.city" placeholder="City" />
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-6">
+                                        <input class="form-control" type="text" ng-model="vm.salesInfo.state" placeholder="State">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input class="form-control" type="text" ng-model="vm.salesInfo.zip_code" placeholder="Zip Code">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group portal-access">
+                                    <checkbox ng-model="vm.salesInfo.portal_access"></checkbox> <span>Portal Access? Send Login Credential</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="x_title">
+                            <h3>Change Password</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <div class="row m-b-10">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>New Password:</label>
+                                    <input class="form-control"
+                                        ng-class="{ 'has-error' : salesFormEdit.new_password1.$invalid && !salesFormEdit.new_password1.$pristine }"
+                                        name="new_password1" ng-model="vm.salesInfo.new_password1" type="password"
+                                        placeholder="New Password" minlength="8" />
+                                    <div class="error"
+                                        ng-if="salesFormEdit.new_password1.$invalid &&  !salesFormEdit.new_password1.$pristine">
+                                        {{vm.MESSAGES.PASSWORD_MIN_LENGTH_ERROR}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password:</label>
+                                    <input class="form-control"
+                                        ng-class="{ 'has-error' : salesFormEdit.new_password2.$invalid && !salesFormEdit.new_password2.$pristine }"
+                                        name="new_password2" ng-model="vm.salesInfo.new_password2" type="password"
+                                        placeholder="Confirm New Password" minlength="8" ng-pattern="vm.salesInfo.new_password1" />
+                                    <div class="error"
+                                        ng-if="salesFormEdit.new_password1.$valid && salesFormEdit.new_password2.$invalid && !salesFormEdit.new_password2.$pristine">
+                                        {{vm.MESSAGES.CONFIRM_PASSWORD_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-info" ui-sref="salesRep">Back</button>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <button type="submit" class="btn btn-primary" ng-disabled="salesFormEdit.$invalid">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

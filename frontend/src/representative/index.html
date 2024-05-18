@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- BEGIN HEAD -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <title>Karis Pharmaceuticals</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
+    <!-- Bootstrap -->
+    <link href="../../assets/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../../assets/plugins/jqvmap/jqvmap.min.css" rel="stylesheet">
+    <!-- Angularjs Toast -->
+    <link href="../../assets/plugins/angularjs-toast/angularjs-toast.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../../assets/css/custom.min.css" rel="stylesheet">
+
+    <link rel="icon" href="https://karispharma.com/wp-content/uploads/2018/05/cropped-Untitled-2-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://karispharma.com/wp-content/uploads/2018/05/cropped-Untitled-2-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="https://karispharma.com/wp-content/uploads/2018/05/cropped-Untitled-2-180x180.png" />
+    <meta name="msapplication-TileImage" content="https://karispharma.com/wp-content/uploads/2018/05/cropped-Untitled-2-270x270.png" />
+</head>
+<!-- END HEAD -->
+
+<body ng-class="{'login': login, 'nav-md': !login && !menuCollapsed, 'nav-sm': !login && menuCollapsed}">
+    <div loading-widget class="loader-backdrop">
+        <div class="loader"></div>
+    </div>
+
+    <div class="container body" ng-if="!login">
+        <div class="main_container">
+            <!-- Sidebar -->
+            <div class="col-md-3 left_col" ui-view="sidebar"></div>
+            <!-- /Sidebar -->
+
+            <!-- Topbar -->
+            <div class="top_nav" ui-view="header"></div>
+            <!-- /Topbar -->
+
+            <!-- Content -->
+            <div class="right_col" role="main">
+                <div ui-view="content"></div>
+            </div>
+            <!-- /Content -->
+        </div>
+    </div>
+
+    <div class="login_wrapper" ng-if="login">
+        <div ui-view="content"></div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../../assets/plugins/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../../assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- JQVMap -->
+    <script src="../../assets/plugins/jqvmap/jquery.vmap.js"></script>
+    <script src="../../assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <script src="../../assets/plugins/jqvmap/maps/jquery.vmap.world.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../../assets/js/custom.min.js"></script>
+    <!-- Sentry -->
+    <script src="https://cdn.ravenjs.com/3.26.4/angular/raven.min.js" crossorigin="anonymous"></script>
+    <script>Raven.config('https://345fe39a41ba4558a79311ecff7da7c2@sentry.io/1252874').install();</script>
+    <!-- Angular Codes -->
+</body>
+</html>

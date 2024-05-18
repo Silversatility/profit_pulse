@@ -1,0 +1,100 @@
+# -*- coding: utf-8 -*-
+from django.conf.urls import url
+
+
+from .views import (
+    LoggedInCustomer,
+    LoggedInUser,
+    LoggedInCredentialing,
+    CustomerDispenseHistory,
+    CustomerPasswordReset,
+    CustomerRevenues,
+    CustomerRevenueReports,
+    CustomerRevenueReports2,
+    CustomerTopProducts,
+    ManagerPasswordReset,
+    PhysicianOverview,
+    PracticeOverview,
+    PhysicianProfitability,
+    TopCustomers,
+    TopPhysicians,
+)
+
+urlpatterns = [
+
+    url(
+        r'^customers/me/$',
+        LoggedInUser.as_view(),
+        name='customer-logged-in'
+    ),
+    url(
+        r'^customers/me/top-products/$',
+        CustomerTopProducts.as_view(),
+        name='customer-top-products'
+    ),
+    url(
+        r'^customers/password/reset/$',
+        CustomerPasswordReset.as_view(),
+        name='customer-password-reset'
+    ),
+    url(
+        r'^customers/revenue-reports/$',
+        CustomerRevenueReports.as_view(),
+        name='customer-revenue-reports'
+    ),
+    url(
+        r'^customers/revenue-reports-2/$',
+        CustomerRevenueReports2.as_view(),
+        name='customer-revenue-reports-2'
+    ),
+    url(
+        r'^customers/revenues/$',
+        CustomerRevenues.as_view(),
+        name='customer-revenues'
+    ),
+    url(
+        r'^customers/top/$',
+        TopCustomers.as_view(),
+        name='customer-top'
+    ),
+    url(
+        r'^customers/(?P<user>[0-9]+)/dispense_histories/$',
+        CustomerDispenseHistory.as_view(),
+        name='customer-dispense-histories'
+    ),
+    url(
+        r'^me/$',
+        LoggedInUser.as_view(),
+        name='user-logged-in'
+    ),
+    url(
+        r'^managers/credentialing-only/me/$',
+        LoggedInCredentialing.as_view(),
+        name='manager-credentialing-only-logged-in'
+    ),
+    url(
+        r'^managers/password/reset/$',
+        ManagerPasswordReset.as_view(),
+        name='manager-password-reset'
+    ),
+    url(
+        r'^physicians/overview/$',
+        PhysicianOverview.as_view(),
+        name='physician-overview'
+    ),
+    url(
+        r'^physicians/practice-overview/$',
+        PracticeOverview.as_view(),
+        name='physician-overview'
+    ),
+    url(
+        r'^physicians/profitability/$',
+        PhysicianProfitability.as_view(),
+        name='physician-profitability'
+    ),
+    url(
+        r'^physicians/top/$',
+        TopPhysicians.as_view(),
+        name='physician-top'
+    ),
+]

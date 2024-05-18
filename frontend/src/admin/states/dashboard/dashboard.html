@@ -1,0 +1,317 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="dashboard">
+    <div class="row tile_count profit-cols" ng-if="vm.profile.user.is_manager && !vm.profile.credentialing_only">
+        <div class="col-md-1 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top">Total Paid</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.total_paid) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-1 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top">Insurance Paid</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.insurance_paid) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-1 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top">Percentage Fees</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.percentage_fees) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-1 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top">Software Fees</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.monthly_maintenance_revenue) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-1 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top">Enrollment Fees</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.enrollment_profit) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-1 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top">Switching Charges</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.switching_charges) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+        <div class="col-md-1 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top">Revenue</span>
+            <div class="count">{{vm.getNumberFromString(vm.reports.total_profit) | currency}}</div>
+            <span class="count_bottom"></span>
+        </div>
+    </div>
+
+    <div class="row" ng-if="(vm.profile.user.is_manager && !vm.profile.credentialing_only) || vm.profile.user.is_sales_representative">
+        <div ng-class="vm.profile.user.is_sales_representative ? 'col-md-12' : 'col-md-9'">
+            <div class="x_panel dashboard_graph">
+                <div class="x_title">
+                    <div class="btn-group pull-right" uib-dropdown ng-if="vm.profile.user.is_sales_representative">
+                        <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+                            {{vm.filter.name}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li role="menuitem" ng-repeat="item in vm.filterResource"
+                                ng-class="{'active': vm.filter.value == item.value}">
+                                <a ng-click="vm.changeFilter(item)">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3>Gross Profit</h3>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="dashboard_graph">
+                    <div class="flot_graph" ng-show="vm.totalProfits.length">
+                        <canvas id="flot" class="chart chart-line" chart-data="vm.totalProfitsChart.data" chart-labels="vm.totalProfitsChart.labels"
+                                chart-series="vm.totalProfitsChart.series" chart-options="vm.totalProfitsChart.options"
+                                chart-dataset-override="vm.totalProfitsChart.datasetOverride" height="85" chart-colors="['#8ff7ff']"></canvas>
+                    </div>
+                    <h4 class="text-center" ng-show="!vm.totalProfits.length">No Gross Profits Data</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" ng-if="!vm.profile.user.is_sales_representative">
+            <div class="x_panel tile fixed_height_320 company_goal">
+                <div class="x_title">
+                    <div class="btn-group pull-right" uib-dropdown>
+                        <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+                            {{vm.filter.name}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li role="menuitem" ng-repeat="item in vm.filterResource" ng-class="{'active': vm.filter.value == item.value}">
+                                <a ng-click="vm.changeFilter(item)">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h2>Customer Goals</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="x_content">
+                      <div class="dashboard-widget-content" style="padding-top: 0px;">
+                          <div class="sidebar-widget" style="width: 100%; margin-top: 0px;">
+                              <h4>Customer</h4>
+                              <ng-gauge size="150" type="arch" thick="10" min="0" max="100" value="vm.getGoalPercent(vm.profile.customer_count, vm.profile.customer_goal)" cap="round"
+                                        foreground-color="#06EDFE" background-color="rgba(0, 0, 0, 0.1)" append="%"></ng-gauge>
+                              <div class="goal-wrapper" style="padding: 0 5px;">
+                                  <span id="gauge-text" class="gauge-value pull-left">{{vm.profile.customer_count || 0}}</span>
+                                  <span id="goal-text" class="goal-value pull-right">{{vm.getNumberFromString(vm.profile.customer_goal)}}</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="vm.profile.user.is_manager && vm.profile.credentialing_only">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="dashboard_graph">
+                <div class="row x_title">
+                    <div class="col-md-6">
+                        <h3>Credentialing Completion</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group pull-right" uib-dropdown>
+                            <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+                                {{vm.filter.name}} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                <li role="menuitem" ng-repeat="item in vm.filterResource" ng-class="{'active': vm.filter.value == item.value}">
+                                    <a ng-click="vm.changeFilter(item)">{{item.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
+                  <div class="x_content" ng-show="vm.allCustomers.length">
+                        <h4 class="text-center"><strong>Credentialing Completion Progress</strong></h4>
+                      <canvas class="chart chart-bar" chart-data="vm.credentialingCompletionChart.data" chart-labels="vm.credentialingCompletionChart.labels" chart-series="vm.credentialingCompletionChart.series"
+                              chart-options="vm.credentialingCompletionChart.options" chart-dataset-override="vm.credentialingCompletionChart.datasetOverride" height="150"></canvas>
+                  </div>
+                  <div class="x_content" ng-show="!vm.allCustomers.length">
+                      <h4 class="text-center">No Customers Data</h4>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row" ng-if="(vm.profile.user.is_manager && !vm.profile.credentialing_only) || vm.profile.user.is_sales_representative">
+        <div ng-class="vm.profile.user.is_sales_representative ? 'col-md-6 col-sm-6 col-xs-12' : 'col-md-4 col-sm-4 col-xs-12'">
+            <div ng-class="vm.profile.user.is_sales_representative ? 'x_panel tile physician_graph' : 'x_panel tile fixed_height_320'">
+                <div class="x_title">
+                    <h2>Top Performing Customers</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.topCustomers.length">
+                    <h4 class="text-center"><strong>Profit</strong></h4>
+                    <canvas class="chart chart-bar" chart-data="vm.customersChart.data" chart-labels="vm.customersChart.labels" chart-series="vm.customersChart.series"
+                            chart-options="vm.customersChart.options" chart-dataset-override="vm.customersChart.datasetOverride" height="150" chart-colors="vm.productsChart.colors"></canvas>
+                </div>
+                <div class="x_content" ng-show="!vm.topCustomers.length">
+                    <h4 class="text-center">No Customers Data</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="vm.profile.user.is_sales_representative">
+            <div class="physician_graph x_panel tile">
+                <div class="x_title">
+                    <h2>Top Physicians</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.topPhysicians.length">
+                    <h4 class="text-center"><strong>Profit</strong></h4>
+                    <canvas class="chart chart-bar" chart-data="vm.physiciansChart.data"
+                        chart-labels="vm.physiciansChart.labels" chart-series="vm.physiciansChart.series"
+                        chart-options="vm.physiciansChart.options" chart-dataset-override="vm.physiciansChart.datasetOverride"
+                        height="150" chart-colors="vm.productsChart.colors"></canvas>
+                </div>
+                <div class="x_content" ng-show="!vm.topPhysicians.length">
+                    <h4 class="text-center">No Physicians Data</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-sm-5 col-xs-12" ng-if="!vm.profile.user.is_sales_representative">
+            <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                    <h2>Top 5 Products</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.topProducts.length">
+                    <div class="doughnut_graph">
+                        <table>
+                            <tr>
+                                <th>
+                                    <p>Top 5</p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <canvas id="doughnut" class="chart chart-doughnut" chart-data="vm.productsChart.data" chart-labels="vm.productsChart.labels"
+                                            chart-colors="vm.productsChart.colors" chart-options="vm.productsChart.options" width="230" height="180"></canvas>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="chart-detail table-responsive">
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    <p>Name</p>
+                                </th>
+                                <th>
+                                    <p>Rank</p>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="product in vm.topProducts | limitTo : 5">
+                                <td>
+                                    <p><i class="fa fa-square" ng-style="{'color': vm.productsChart.colors[$index]}"></i></p>
+                                </td>
+                                <td>
+                                    <p>{{product.title}} </p>
+                                </td>
+                                <td>
+                                    <p>{{$index + 1}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="x_content" ng-show="!vm.topProducts.length">
+                    <h4 class="text-center">No Products Data</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-12" ng-if="!vm.profile.user.is_sales_representative">
+            <div class="x_panel tile fixed_height_320 company_goal">
+                <div class="x_title">
+                    <h2>Revenue Goals</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="dashboard-widget-content">
+                        <div class="sidebar-widget" style="width: 100%">
+                            <h4>Revenue</h4>
+                            <ng-gauge size="150" type="arch" thick="10" min="0" max="100" value="vm.getGoalPercent(vm.reports.total_profit, vm.profile.company_goal)" cap="round"
+                                      foreground-color="#06EDFE" background-color="rgba(0, 0, 0, 0.1)" append="%"></ng-gauge>
+                            <div class="goal-wrapper">
+                                <span id="gauge-text" class="gauge-value pull-left">${{vm.reports.total_profit || 0}}</span>
+                                <span id="goal-text" class="goal-value pull-right">${{vm.getNumberFromString(vm.profile.company_goal) / 1000000 | number:2}}M</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12" ng-if="vm.profile.user.is_manager && !vm.profile.credentialing_only">
+            <div class="physician_graph x_panel tile">
+                <div class="x_title">
+                    <h2>Top Physicians</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.topPhysicians.length">
+                    <h4 class="text-center"><strong>Profit</strong></h4>
+                    <canvas class="chart chart-bar" chart-data="vm.physiciansChart.data" chart-labels="vm.physiciansChart.labels" chart-series="vm.physiciansChart.series"
+                            chart-options="vm.physiciansChart.options" chart-dataset-override="vm.physiciansChart.datasetOverride" height="150" chart-colors="vm.productsChart.colors"></canvas>
+                </div>
+                <div class="x_content" ng-show="!vm.topPhysicians.length">
+                    <h4 class="text-center">No Physicians Data</h4>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="!vm.profile.user.is_customer" ng-class="vm.profile.user.is_sales_representative || (vm.profile.user.is_manager && vm.profile.credentialing_only) ? 'col-md-12 col-sm-12 col-xs-12' : 'col-md-8 col-sm-8 col-xs-12'">
+            <div class="vector_map x_panel tile">
+                <div class="x_title">
+                    <h2>Customer Geography</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.allCustomers.length">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <p class="state-label">State</p>
+                        <div class="table-container">
+                            <table class="countries_list">
+                                <tbody>
+                                    <tr ng-repeat="(state, percent) in vm.vmapCharts.values">
+                                        <td>{{vm.getRealState(state)}}</td>
+                                        <td class="fs15 fw700 text-right">{{percent}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div id="usa_map" style="height: 300px"></div>
+                    </div>
+                </div>
+                <div class="x_content" ng-show="!vm.allCustomers.length">
+                    <h4 class="text-center">No Customers Data</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="vm.profile.user.is_manager && !vm.profile.credentialing_only">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel tile">
+                <div class="x_title">
+                    <h2>Customer Schedule Status</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div ui-calendar="vm.calendarOptions" ng-model="vm.calendarEvents"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

@@ -1,0 +1,121 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="customers">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Customer: {{vm.data.business_name}}</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h3>Profile</h3>
+                </div>
+
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <p>
+                                <strong>Business Name:</strong>
+                                <span>{{vm.data.user.first_name}} {{vm.data.user.last_name}}</span>
+                            </p>
+                            <p>
+                                <strong>Parent:</strong>
+                                <span>{{vm.data.parent_display}}</span>
+                            </p>
+                            <p>
+                                <strong>Email Address:</strong>
+                                <span> {{vm.data.user.email}}</span>
+                            </p>
+                            <p>
+                                <strong>Phone:</strong>
+                                <span>{{vm.data.phone_number}}</span>
+                            </p>
+                            <p>
+                                <strong>Sales Rep:</strong>
+                                <span>{{vm.data.sales_representative.user.first_name}} {{vm.data.sales_representative.user.last_name}}</span>
+                            </p>
+                            <p>
+                                <strong>Clinic Type:</strong>
+                                <span>{{vm.data.clinic_type}}</span>
+                            </p>
+
+                            <div class="ln_solid"></div>
+
+                            <p>
+                                <strong>Software Install:</strong>
+                                <span>{{vm.data.software_install}}</span>
+                            </p>
+                            <p>
+                                <strong>Active:</strong>
+                                <span>{{vm.data.active_date}}</span>
+                            </p>
+                            <p>
+                                <strong>Credentialed:</strong>
+                                <span>{{vm.data.credentialed_date}}</span>
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <p>
+                                <strong>Street Address:</strong>
+                                <span>{{vm.data.street_address}}</span>
+                            </p>
+                            <p>
+                                <strong>City:</strong>
+                                <span>{{vm.data.city}}</span>
+                            </p>
+                            <p>
+                                <strong>State:</strong>
+                                <span>{{vm.data.state}}</span>
+                            </p>
+                            <p>
+                                <strong>Zip Code:</strong>
+                                <span>{{vm.data.zip_code}}</span>
+                            </p>
+                            <p>
+                                <strong>Number of Locations:</strong>
+                                <span>{{vm.data.num_locations}}</span>
+                            </p>
+                            <p>
+                                <strong>Number of Physicians:</strong>
+                                <span>{{vm.data.num_physicians}}</span>
+                            </p>
+                            <p>
+                                <strong>Billing %:</strong>
+                                <span>{{vm.data.billing_percentage}} %</span>
+                            </p>
+                            <p>
+                                <strong>Switch Fees:</strong>
+                                <span>$ {{vm.data.switching_fee}}</span>
+                            </p>
+                            <p>
+                                <strong>Enrollment Fee:</strong>
+                                <span>$ {{vm.data.enrollment_fee}}</span>
+                            </p>
+                            <p>
+                                <strong>Enrollment Date:</strong>
+                                <span>{{vm.data.enrollment_date | date}}</span>
+                            </p>
+                            <p>
+                                <strong>Monthly Fees:</strong>
+                                <span>$ {{vm.data.monthly_fee}}</span>
+                            </p>
+                            <p>
+                                <strong>Monthly Fees Starting Date:</strong>
+                                <span>{{vm.data.monthly_fee_start_date | date}}</span>
+                            </p>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <button class="btn btn-info" ui-sref="customers">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

@@ -1,0 +1,102 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="profile">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <form ng-submit="vm.save()" name="profileForm" novalidate>
+                    <div class="x_title">
+                        <h3>Profile Settings</h3>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <strong>Date Created:</strong> <span>{{vm.myProfile.user.created | date}}</span>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row m-b-10">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Business Name:</label>
+                                    <input class="form-control" type="text" ng-model="vm.profile.business_name"  placeholder="Business Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>First Name:</label>
+                                    <input class="form-control" type="text" ng-model="vm.profile.user.first_name" placeholder="First Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name:</label>
+                                    <input class="form-control" type="text" ng-model="vm.profile.user.last_name" placeholder="Last Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address *:</label>
+                                    <input class="form-control" ng-class="{ 'has-error' : profileForm.email.$invalid && !profileForm.email.$pristine }"
+                                           name="email" type="email" ng-model="vm.profile.user.email" placeholder="(*)Email Address" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number:</label>
+                                    <input class="form-control" type="phone" ng-model="vm.profile.phone_number" placeholder="Phone" maxlength="14" ui-us-phone-number-mask/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Clinic Type:</label>
+                                    <select class="form-control" ng-model="vm.profile.clinic_type">
+                                        <option value="" class="hidden" selected>-- Clinic Type --</option>
+                                        <option value="orthopedics">Orthopedics</option>
+                                        <option value="podiatry">Podiatry</option>
+                                        <option value="pain_management">Pain Management</option>
+                                        <option value="opthalmology">Ophthalmology</option>
+                                        <option value="dermatology">Dermatology</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="x_title">
+                        <h3>Change Password</h3>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row m-b-10">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Current Password:</label>
+                                    <input class="form-control" name="old_password" ng-model="vm.profile.old_password" type="password"
+                                           placeholder="Current Password" />
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password:</label>
+                                    <input class="form-control" ng-class="{ 'has-error' : profileForm.new_password1.$invalid && !profileForm.new_password1.$pristine }"
+                                           name="new_password1" ng-model="vm.profile.new_password1" type="password"
+                                           placeholder="New Password" minlength="8" ng-required="vm.profile.old_password" />
+                                    <div class="error" ng-if="profileForm.new_password1.$invalid &&  !profileForm.new_password1.$pristine">
+                                        {{vm.MESSAGES.PASSWORD_MIN_LENGTH_ERROR}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password:</label>
+                                    <input class="form-control" ng-class="{ 'has-error' : profileForm.new_password2.$invalid && !profileForm.new_password2.$pristine }"
+                                           name="new_password2" ng-model="vm.profile.new_password2" type="password"
+                                           placeholder="Confirm New Password" minlength="8" ng-pattern="vm.profile.new_password1"
+                                           ng-required="vm.profiles.old_password" />
+                                    <div class="error" ng-if="profileForm.new_password1.$valid && profileForm.new_password2.$invalid && !profileForm.new_password2.$pristine">
+                                        {{vm.MESSAGES.CONFIRM_PASSWORD_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 text-right">
+                                <button type="submit" class="btn btn-primary" ng-disabled="profileForm.$invalid">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

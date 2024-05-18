@@ -1,0 +1,66 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="customers customer-edit">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>News Feed</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <form ng-submit="vm.save()" name="newsFeedForm" novalidate>
+                    <div class="x_title">
+                        <h3>Edit News Feed</h3>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <strong>Date Published:</strong> <span>{{vm.editableData.date_published | date}}</span>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Subject</label>
+                                    <input class="form-control" type="text" ng-model="vm.editableData.subject" placeholder="Subject" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Link</label>
+                                    <input class="form-control" type="text" ng-model="vm.editableData.link" placeholder="Link" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Body</label>
+                                <textarea class="form-control" rows="3" placeholder="Body" ng-model="vm.editableData.body"></textarea>
+                            </div>
+                            <div class="col-sm-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Thumbnail</label><br/>
+                                    <button type="button" class="btn btn-info" ng-click="vm.chooseFile()">Choose File</button>
+                                    <input ngf-select class="hidden" ng-model="vm.editableData.thumbnail" id="thumbnail" type="file" placeholder="Thumbnail" />
+                                    <span id="custom-text">{{ vm.editableData.thumbnail.name || 'No file selected' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-info" ui-sref="newsfeeds">Back</button>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <button type="submit" class="btn btn-primary" ng-disabled="newsFeedForm.$invalid">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

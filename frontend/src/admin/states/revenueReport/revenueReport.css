@@ -1,0 +1,41 @@
+.revenue_report .title_left {
+    margin: 10px 0;
+}
+
+.revenue_report .date_picker {
+    width: 200px;
+    margin-left: 5px;
+}
+
+.revenue_report .date_picker .input-group > .input-group-btn .btn {
+    margin-right: 0;
+}
+
+.revenue_report .date_picker .uib-datepicker-popup {
+    left: auto !important;
+}
+
+.revenue_report table.dataTable {
+    margin-bottom: 0;
+}
+
+.revenue_report table.dataTable th {
+    position: relative;
+    padding-right: 20px !important;
+    cursor: pointer;
+}
+
+.revenue_report table.dataTable th i {
+    position: absolute;
+    top: 10px;
+    right: 6px;
+}
+
+.revenue_report .pagination-info {
+    margin: 10px 0;
+    line-height: 30px;
+}
+
+.revenue_report .pagination {
+    margin: 10px 0;
+}

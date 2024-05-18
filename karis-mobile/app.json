@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "idispense",
+    "slug": "karis-mobile",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.3.0",
+    "orientation": "portrait",
+    "icon": "./assets/idispenseicon.png",
+    "splash": {
+      "image": "./assets/idispense.png",
+      "backgroundColor": "#ffffff",
+      "resizeMode": "contain"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.karispharma",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "This app uses the FaceID to authenticate the user."
+      }
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#ffffff",
+      "barStyle": "dark-content"
+    },
+    "android": {
+      "package": "com.profit_pulse.karismobile"
+    },
+    "description": "",
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 60000
+    },
+    "hooks": {
+    "postPublish": [
+      {
+        "file": "sentry-expo/upload-sourcemaps",
+        "config": {
+          "organization": "mik-medina",
+          "project": "idispense",
+          "authToken": "dadf11ab73b94b8eaf5f7be263414bfb69498d63da2f45d19eed234723f00b15"
+        }
+      }
+    ]
+  }
+  }
+}

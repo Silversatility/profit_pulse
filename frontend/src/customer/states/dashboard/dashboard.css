@@ -1,0 +1,101 @@
+.dashboard .tile_count .tile_stats_count {
+    padding: 5px 10px;
+}
+
+.dashboard .tile_count .tile_stats_count:before {
+    height: 45px;
+}
+
+.dashboard .tile_count .tile_stats_count .count {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 35px;
+}
+
+.dashboard .dashboard_graph .dropdown-menu {
+    width: 140px;
+}
+
+.dashboard .dashboard_graph .dropdown-menu > li > a {
+    font-size: 14px;
+    padding: 5px 20px;
+}
+
+.dashboard .dashboard_graph .dropdown-menu > li.active > a {
+    background: #f5f5f5;
+    color: #262626;
+}
+
+.dashboard .flot_graph {
+    padding: 0 15px;
+}
+
+.dashboard .progress .progress-bar {
+    background: #06EDFE;
+}
+
+.dashboard .cursor-pointer {
+    cursor: pointer;
+}
+
+.dashboard .fixed_height_350 {
+    height: 350px;
+}
+
+.dashboard .graph_area {
+    float: left;
+    width: 400px;
+}
+
+.dashboard .legend_area {
+    float: left;
+    width: calc(100% - 400px);
+    overflow: auto;
+}
+
+.dashboard .legend_area .legend_container {
+    min-width: 240px;
+}
+
+.dashboard .legend_area p {
+    margin-bottom: 5px;
+}
+
+@media (max-width: 1715px) and (min-width: 1530px){
+    .dashboard .tile_count .tile_stats_count .count {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1529px) {
+    .dashboard .tile_count .tile_stats_count .count {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 435px) {
+    .dashboard .tile_count .tile_stats_count .count {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .dashboard .graph_area {
+        width: 300px;
+    }
+
+    .dashboard .legend_area {
+        width: calc(100% - 300px);
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .dashboard .graph_area, .dashboard .legend_area {
+        width: 100%;
+    }
+
+    .dashboard .fixed_height_350 {
+        height: inherit;
+    }
+}

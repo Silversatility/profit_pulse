@@ -1,0 +1,76 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="customer_report">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Customer Revenue</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <div class="date_picker">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="M!/d!/yyyy" ng-model="vm.datepickerDate.startDate" placeholder="Start Date"
+                                           is-open="vm.startDateOpened" ng-focus="vm.openStartDate()" ng-change="vm.fetch()" popup-placement="bottom-right" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.openStartDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="date_picker">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="M!/d!/yyyy" ng-model="vm.datepickerDate.endDate" placeholder="End Date"
+                                           is-open="vm.endDateOpened" ng-focus="vm.openEndDate()" ng-change="vm.fetch()" popup-placement="bottom-right" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.openEndDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <table class="table table-striped table-bordered dataTable">
+                        <thead>
+                            <tr>
+                                <th sorted-column="vm.sortParameters" sorted-field="business_name" update-function="vm.fetch()">Practice Name</th>
+                                <th ng-if="vm.profile.user.is_manager" sorted-column="vm.sortParameters" sorted-field="total_paid" update-function="vm.fetch()">Total Paid</th>
+                                <th sorted-column="vm.sortParameters" sorted-field="margin" update-function="vm.fetch()">Profit</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-if="vm.items.length">
+                            <tr ng-repeat="item in vm.items">
+                                <td>{{ item.business_name }}</td>
+                                <td ng-if="vm.profile.user.is_manager">{{ item.total_paid | currency }}</td>
+                                <td>{{ item.margin | currency }}</td>
+                            </tr>
+                        </tbody>
+                        <tbody ng-if="!vm.items.length">
+                            <tr>
+                                <td colspan="5" class="text-center">No Customer Revenue Report...</td>
+                            </tr>
+                        </tbody>
+                        <tfoot ng-if="vm.items.length">
+                            <tr>
+                                <th>TOTAL:</th>
+                                <th ng-if="vm.profile.user.is_manager">{{ vm.totals.total_paid | currency }}</th>
+                                <th>{{ vm.totals.margin | currency }}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

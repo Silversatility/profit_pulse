@@ -1,0 +1,3 @@
+{{ object.physician.name }}
+{{ object.product.title }}
+{{ object.order_date }}

@@ -1,0 +1,186 @@
+.dashboard .tile_count .tile_stats_count {
+    padding: 5px 10px;
+}
+
+.dashboard .tile_count .tile_stats_count:before {
+    height: 45px;
+}
+
+.dashboard .tile_count .tile_stats_count .count {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 35px;
+}
+
+.dashboard .dashboard_graph .dropdown-menu {
+    width: 140px;
+}
+
+.dashboard .dashboard_graph .dropdown-menu > li > a {
+    font-size: 14px;
+    padding: 5px 20px;
+}
+
+.dashboard .dashboard_graph .dropdown-menu > li.active > a {
+    background: #f5f5f5;
+    color: #262626;
+}
+
+.dashboard .flot_graph {
+    padding: 0 15px;
+}
+
+.dashboard .progress .progress-bar {
+    background: #06EDFE;
+}
+
+.dashboard .cursor-pointer {
+    cursor: pointer;
+}
+
+.dashboard .doughnut_graph {
+    float: left;
+    width: 250px;
+}
+
+.dashboard .doughnut_graph + .chart-detail {
+    float: left;
+    width: calc(100% - 250px);
+}
+
+.dashboard .chart-detail table {
+    width: 100%;
+    min-width: 250px;
+}
+
+.dashboard .sidebar-widget {
+    position: relative;
+}
+
+.dashboard .goal-wrapper {
+    position: absolute;
+    width: calc(100% - 10px);
+    bottom: 10px;
+    left: 5px;
+}
+
+.dashboard .vector_map, .dashboard .physician_graph {
+    min-height: 400px;
+}
+
+.dashboard .physician_graph .x_content {
+    min-height: 320px;
+}
+
+.dashboard .vector_map table.countries_list {
+    margin-bottom: 10px;
+}
+
+.dashboard .vector_map table.countries_list th {
+    padding: 0 10px;
+    line-height: 35px;
+    font-size: 15px;
+}
+
+.dashboard .vector_map .table-container {
+    max-height: 275px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.dashboard .state-label {
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.customer-goal-header-sm {
+  display: none;
+}
+
+@media (max-width: 1750px) and (min-width: 768px) {
+    .dashboard .company_goal .quick-list {
+        display: none;
+    }
+
+    .dashboard .company_goal .sidebar-widget {
+        width: 100%;
+        float: left;
+    }
+}
+
+@media (max-width: 1715px) and (min-width: 1530px){
+    .dashboard .tile_count .tile_stats_count .count {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1529px) {
+    .dashboard .tile_count .tile_stats_count .count {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 435px) {
+    .dashboard .tile_count .tile_stats_count .count {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .dashboard .chart-detail.table-responsive {
+        border: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .dashboard .fixed_height_320 {
+        height: inherit !important;
+    }
+
+    .dashboard .doughnut_graph {
+        width: 100%;
+    }
+
+    .dashboard .doughnut_graph table {
+        width: 100%;
+    }
+
+    .dashboard .doughnut_graph + .chart-detail {
+        width: 100%;
+    }
+    .customer-goal-header-sm {
+      display: block;
+    }
+    .customer-goal-header-lg {
+      display: none!important;
+    }
+}
+
+
+@media (min-width: 768px){
+  .profit-cols .col-md-1,
+  .profit-cols .col-sm-1,
+  .profit-cols .col-lg-1  {
+    width: 100%;
+    *width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .profit-cols .col-md-1,
+  .profit-cols .col-sm-1,
+  .profit-cols .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .profit-cols .col-md-1,
+  .profit-cols .col-sm-1,
+  .profit-cols .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+  }
+}

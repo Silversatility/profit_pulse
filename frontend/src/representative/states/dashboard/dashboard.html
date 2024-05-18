@@ -1,0 +1,95 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="dashboard">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel dashboard_graph">
+                <div class="x_title">
+                    <div class="btn-group pull-right" uib-dropdown>
+                        <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+                            {{vm.filter.name}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li role="menuitem" ng-repeat="item in vm.filterResource"
+                                ng-class="{'active': vm.filter.value == item.value}">
+                                <a ng-click="vm.changeFilter(item)">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3>Gross Profit</h3>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="dashboard_graph">
+                    <div class="flot_graph" ng-show="vm.totalProfits.length">
+                        <canvas id="flot" class="chart chart-line" chart-data="vm.totalProfitsChart.data" chart-labels="vm.totalProfitsChart.labels"
+                                chart-series="vm.totalProfitsChart.series" chart-options="vm.totalProfitsChart.options"
+                                chart-dataset-override="vm.totalProfitsChart.datasetOverride" height="85" chart-colors="['#8ff7ff']"></canvas>
+                    </div>
+                    <h4 class="text-center" ng-show="!vm.totalProfits.length">No Gross Profits Data</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12" style="display: flex; width: 100%;">
+            <div class="x_panel tile col-md-6 col-sm-6 col-xs-12" style="flex: 1; margin-right: 15px;">
+                <div class="x_title">
+                    <h2>Top Performing Customers</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.topCustomers.length">
+                    <h4 class="text-center"><strong>Profit</strong></h4>
+                    <canvas class="chart chart-bar" chart-data="vm.customersChart.data" chart-labels="vm.customersChart.labels" chart-series="vm.customersChart.series"
+                            chart-options="vm.customersChart.options" chart-dataset-override="vm.customersChart.datasetOverride" height="150" chart-colors="vm.productsChart.colors"></canvas>
+                </div>
+                <div class="x_content" ng-show="!vm.topCustomers.length">
+                    <h4 class="text-center">No Customers Data</h4>
+                </div>
+            </div>
+            <div class="physician_graph x_panel tile col-md-6 col-sm-6 col-xs-12" style="flex: 1;">
+                <div class="x_title">
+                    <h2>Top Physicians</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.topPhysicians.length">
+                    <h4 class="text-center"><strong>Profit</strong></h4>
+                    <canvas class="chart chart-bar" chart-data="vm.physiciansChart.data" chart-labels="vm.physiciansChart.labels" chart-series="vm.physiciansChart.series"
+                            chart-options="vm.physiciansChart.options" chart-dataset-override="vm.physiciansChart.datasetOverride" height="150" chart-colors="vm.productsChart.colors"></canvas>
+                </div>
+                <div class="x_content" ng-show="!vm.topPhysicians.length">
+                    <h4 class="text-center">No Physicians Data</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="vector_map x_panel tile">
+                <div class="x_title">
+                    <h2>Customer Geography</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.allCustomers.length">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <table class="countries_list">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="(state, percent) in vm.vmapCharts.values">
+                                    <td>{{vm.getRealState(state)}}</td>
+                                    <td class="fs15 fw700 text-right">{{percent}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div id="usa_map" style="height: 300px"></div>
+                    </div>
+                </div>
+                <div class="x_content" ng-show="!vm.allCustomers.length">
+                    <h4 class="text-center">No Customers Data</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

@@ -1,0 +1,262 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="customers">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Customer: {{vm.data.business_name}}</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h3>Profile</h3>
+                </div>
+
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <p>
+                                <strong>User Name:</strong>
+                                <span>{{vm.data.user.first_name}} {{vm.data.user.last_name}}</span>
+                            </p>
+                            <p>
+                                <strong>Business Name:</strong>
+                                <span>{{vm.data.business_name}}</span>
+                            </p>
+                            <p>
+                                <strong>Parent:</strong>
+                                <span>{{vm.data.parent_display}}</span>
+                            </p>
+                            <p>
+                                <strong>Email Address:</strong>
+                                <span> {{vm.data.user.email}}</span>
+                            </p>
+                            <p>
+                                <strong>Phone:</strong>
+                                <span>{{vm.data.phone_number}}</span>
+                            </p>
+                            <p>
+                                <strong>Sales Rep:</strong>
+                                <span>{{vm.data.sales_representative.user.first_name}} {{vm.data.sales_representative.user.last_name}}</span>
+                            </p>
+                            <p>
+                                <strong>Credentialing User:</strong>
+                                <span>{{vm.data.credentialing_user.user.first_name}} {{vm.data.credentialing_user.user.last_name}}</span>
+                            </p>
+                            <p>
+                                <strong>Clinic Type:</strong>
+                                <span>{{vm.data.clinic_type}}</span>
+                            </p>
+
+                            <div class="ln_solid"></div>
+
+                            <p>
+                                <strong>Software Install:</strong>
+                                <span>{{vm.data.software_install}}</span>
+                            </p>
+                            <p>
+                                <strong>Active:</strong>
+                                <span>{{vm.data.active_date}}</span>
+                            </p>
+                            <p>
+                                <strong>Credentialed:</strong>
+                                <span>{{vm.data.credentialed_date}}</span>
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <p>
+                                <strong>Street Address:</strong>
+                                <span>{{vm.data.street_address}}</span>
+                            </p>
+                            <p>
+                                <strong>City:</strong>
+                                <span>{{vm.data.city}}</span>
+                            </p>
+                            <p>
+                                <strong>State:</strong>
+                                <span>{{vm.data.state}}</span>
+                            </p>
+                            <p>
+                                <strong>Zip Code:</strong>
+                                <span>{{vm.data.zip_code}}</span>
+                            </p>
+                            <p>
+                                <strong>Number of Locations:</strong>
+                                <span>{{vm.data.num_locations}}</span>
+                            </p>
+                            <p>
+                                <strong>Number of Physicians:</strong>
+                                <span>{{vm.data.num_physicians}}</span>
+                            </p>
+                            <p>
+                                <strong>Enrollment Fee:</strong>
+                                <span>$ {{vm.data.enrollment_fee}}</span>
+                            </p>
+                            <p>
+                                <strong>Enrollment Date:</strong>
+                                <span>{{vm.data.enrollment_date | date}}</span>
+                            </p>
+                            <p>
+                                <strong>Monthly Fees Starting Date:</strong>
+                                <span>{{vm.data.monthly_fee_start_date | date}}</span>
+                            </p>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <button class="btn btn-info" ui-sref="customers">Back</button>
+                            <button class="btn btn-default btn-warning" ui-sref="customers.profile.edit({id: vm.data.user_id})">
+                              Edit <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger" ui-sref="customers.merge-customer({id: vm.data.user_id})">Merge Customer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_panel">
+                <div class="x_title">
+                    <h3 style="display: inline;">Contract Fee Structures</h3>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <div class="btn-group dropup" uib-dropdown auto-close="disabled" is-open="vm.feeStructureForm">
+                                <button type="button" class="btn btn-default" uib-dropdown-toggle>
+                                    <i class="fa fa-plus-circle"></i>&nbsp;Add
+                                </button>
+                                <div class="dropdown-menu add-customer" uib-dropdown-menu role="menu">
+                                    <h3>{{ vm.feeStructure.id ? 'Update' : 'Add' }} Fee Structure</h3>
+                                    <form ng-submit="vm.onSubmitFeeStructure(formFeeStructure)" name="formFeeStructure" novalidate>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                              <p class="input-group">
+                                                <input ng-required="true"
+                                                    placeholder="(*) Start Date"
+                                                    popup-placement="top-right"
+                                                    type="text"
+                                                    class="form-control"
+                                                    datepicker-append-to-body="true"
+                                                    uib-datepicker-popup="M!/d!/yyyy"
+                                                    ng-model="vm.feeStructure.start_date"
+                                                    ng-click="vm.startDateOpened = true"
+                                                    is-open="vm.startDateOpened"
+                                                    ng-required="true"
+                                                    close-text="Close"  />
+                                                <span class="input-group-btn">
+                                                  <button type="button"
+                                                      class="btn btn-default"
+                                                      ng-click="vm.startDateOpened = true">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                  </button>
+                                                </span>
+                                              </p>
+                                            </div>
+                                            <div class="col-sm-12">
+                                              <p class="input-group">
+                                                <input placeholder="End Date"
+                                                    popup-placement="top-right"
+                                                    type="text"
+                                                    class="form-control"
+                                                    datepicker-append-to-body="true"
+                                                    uib-datepicker-popup="M!/d!/yyyy"
+                                                    ng-model="vm.feeStructure.end_date"
+                                                    ng-click="vm.endDateOpened = true"
+                                                    is-open="vm.endDateOpened"
+                                                    close-text="Close"  />
+                                                <span class="input-group-btn">
+                                                  <button type="button"
+                                                      class="btn btn-default"
+                                                      ng-click="vm.endDateOpened = true">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                  </button>
+                                                </span>
+                                              </p>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <input class="form-control"
+                                                       name="monthly_fee"
+                                                       type="text"
+                                                       placeholder="(*) Monthly Fee"
+                                                       ng-model="vm.feeStructure.monthly_fee"
+                                                       required />
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <input class="form-control"
+                                                       name="billing_percentage"
+                                                       type="text"
+                                                       placeholder="(*) Billing Percentage"
+                                                       ng-model="vm.feeStructure.billing_percentage"
+                                                       required />
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <input class="form-control"
+                                                       name="switching_fee"
+                                                       type="text"
+                                                       placeholder="(*) Switching Fee"
+                                                       ng-model="vm.feeStructure.switching_fee"
+                                                       required />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-12 text-right">
+                                                <button type="button" class="btn btn-default" ng-click="vm.feeStructureForm = false; vm.feeStructure = {}">Close</button>
+                                                <button type="submit" class="btn btn-primary" ng-disabled="formFeeStructure.$invalid">{{ vm.feeStructure.id ? 'Update' : 'Save' }}</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                          <table class="table table-striped table-bordered dataTable">
+                              <thead>
+                                  <tr>
+                                      <th sorted-column="vm.sortParameters" sorted-field="start_date" update-function="vm.fetchFeeStructures()">Start Date</th>
+                                      <th sorted-column="vm.sortParameters" sorted-field="end_date" update-function="vm.fetchFeeStructures()">End Date</th>
+                                      <th sorted-column="vm.sortParameters" sorted-field="monthly_fee" update-function="vm.fetchFeeStructures()">Monthly Fee</th>
+                                      <th sorted-column="vm.sortParameters" sorted-field="billing_percentage" update-function="vm.fetchFeeStructures()">Billing Percentage</th>
+                                      <th sorted-column="vm.sortParameters" sorted-field="switching_fee" update-function="vm.fetchFeeStructures()">Switching Fee</th>
+                                      <th>Actions</th>
+                                  </tr>
+                              </thead>
+                              <tbody ng-if="vm.feeStructures.length">
+                                  <tr ng-repeat="fee_stucture in vm.feeStructures">
+                                      <td>{{ fee_stucture.start_date | date }}</td>
+                                      <td>{{ fee_stucture.end_date | date }}</td>
+                                      <td>{{ fee_stucture.monthly_fee | currency }}</td>
+                                      <td>{{ fee_stucture.billing_percentage}}%</td>
+                                      <td>{{ fee_stucture.switching_fee | currency }}</td>
+                                      <td>
+                                          <a ng-click="vm.updateFeeStructure(fee_stucture)" class="btn btn-default btn-sm btn-warning">
+                                            Edit <i class="fa fa-pencil"></i>
+                                          </a>
+                                          <a ng-click="vm.deleteFeeStructure(fee_stucture.id)" class="btn btn-default btn-sm btn-danger">
+                                            Delete <i class="fa fa-trash"></i>
+                                          </a>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                              <tbody ng-if="!vm.feeStructures.length">
+                                  <tr>
+                                      <td colspan="6" class="text-center">No Fee Structures...</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

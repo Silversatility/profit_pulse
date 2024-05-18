@@ -1,0 +1,92 @@
+.btn-karis {
+  background: #06EDFE;
+  color: #fff;
+  font-weight: 700;
+  border-color: #06d8fe;
+}
+.btn-karis:hover {
+  background: #06d8fe;
+  color: #fff;
+  border-color: #06d8fe;
+}
+
+.products .title_left {
+    margin: 10px 0;
+}
+
+.products .dropdown {
+    margin: 0 5px 5px 0;
+}
+
+.products .dropdown-menu {
+    width: 140px;
+}
+
+.products .dropdown-menu.add-product {
+    width: 400px;
+    padding: 10px 15px;
+}
+
+.products .dropdown-menu.add-product .dropzone {
+    color: #067ab6;
+    border: 2px dashed #028AF4;
+    background: #fff;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    min-height: initial;
+}
+
+.products .dropdown-menu.add-product .activate-product > button {
+    float: left;
+}
+
+.products .dropdown-menu.add-product .activate-product > span {
+    float: left;
+    font-size: 14px;
+    line-height: 22px;
+    margin-left: 5px;
+    color: #555;
+}
+
+.products  .dropdown-menu > li > a {
+    font-size: 14px;
+    padding: 5px 20px;
+}
+
+.products  .dropdown-menu > li.active > a {
+    background: #f5f5f5;
+    color: #262626;
+}
+
+.products .btn-add {
+    margin-right: 0;
+    padding: 6px 12px;
+    color: #000000;
+}
+
+.products table {
+    margin-bottom: 0;
+}
+
+.products table th {
+    position: relative;
+    padding-right: 20px !important;
+    cursor: pointer;
+}
+
+.products table th i {
+    position: absolute;
+    top: 10px;
+    right: 6px;
+}
+
+.products .pagination-info {
+    margin: 10px 0;
+    line-height: 30px;
+}
+
+.products .pagination {
+    margin: 10px 0;
+}

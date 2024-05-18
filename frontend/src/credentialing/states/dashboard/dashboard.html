@@ -1,0 +1,75 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="dashboard">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="dashboard_graph">
+                <div class="row x_title">
+                    <div class="col-md-6">
+                        <h3>Credentialing Completion</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group pull-right" uib-dropdown>
+                            <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+                                {{vm.filter.name}} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                <li role="menuitem" ng-repeat="item in vm.filterResource" ng-class="{'active': vm.filter.value == item.value}">
+                                    <a ng-click="vm.changeFilter(item)">{{item.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
+                  <div class="x_content" ng-show="vm.allCustomers.length">
+                        <h4 class="text-center"><strong>Credentialing Completion Progress</strong></h4>
+                      <canvas class="chart chart-bar" chart-data="vm.credentialingCompletionChart.data" chart-labels="vm.credentialingCompletionChart.labels" chart-series="vm.credentialingCompletionChart.series"
+                              chart-options="vm.credentialingCompletionChart.options" chart-dataset-override="vm.credentialingCompletionChart.datasetOverride" height="150"></canvas>
+                  </div>
+                  <div class="x_content" ng-show="!vm.allCustomers.length">
+                      <h4 class="text-center">No Customers Data</h4>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="vector_map x_panel tile">
+                <div class="x_title">
+                    <h2>Customer Geography</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-show="vm.allCustomers.length">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <table class="countries_list">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="(state, percent) in vm.vmapCharts.values">
+                                    <td>{{vm.getRealState(state)}}</td>
+                                    <td class="fs15 fw700 text-right">{{percent}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div id="usa_map" style="height: 300px"></div>
+                    </div>
+                </div>
+                <div class="x_content" ng-show="!vm.allCustomers.length">
+                    <h4 class="text-center">No Customers Data</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

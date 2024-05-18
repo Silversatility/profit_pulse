@@ -1,0 +1,45 @@
+.login_content {
+    max-width: 300px;
+}
+
+.login-form .logo {
+    width: 300px;
+    margin: 30px auto;
+}
+
+.login-form .logo img {
+    width: 100%;
+}
+
+.login-form .error-login {
+    color: red;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.login-form .form-actions .login {
+    margin-right: 50px;
+    margin-bottom: 0;
+}
+
+.login-form .form-actions.forget-pwd .btn {
+    min-width: 110px;
+}
+
+.login-form .form-actions.forget-pwd .btn-primary {
+    margin-right: 0;
+}
+
+.login-form #forget-password {
+    display: inline-block;
+    margin: 0;
+}
+
+.login-form a.btn {
+    font-size: 14px;
+    margin: 0;
+}
+
+.login-form a.btn:hover {
+    text-decoration: none;
+}

@@ -1,0 +1,179 @@
+<!-- BEGIN CONTENT BODY -->
+<div class="customers customer-edit">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Customer: {{vm.oldCustomerName}}</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h3>Edit Profile</h3>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <strong>Date Created:</strong> <span>{{vm.editableData.user.created | date}}</span>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <form ng-submit="vm.save()" name="customerForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="vm.editableData.business_name"
+                                           placeholder="(*) Business Name" name="business_name"
+                                           ng-class="{ 'has-error' : customerForm.business_name.$invalid && !customerForm.business_name.$pristine }" required />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control input-group" ng-model="vm.editableData.parent" name="parent">
+                                        <option value="" class="hidden">No Parent</option>
+                                        <option ng-repeat="customer in vm.customers" ng-value="{{customer.user}}">{{customer.business_name}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="vm.editableData.user.first_name"
+                                           placeholder="Contact First Name" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="vm.editableData.user.last_name"
+                                           placeholder="Contact Last Name" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" ng-class="{ 'has-error': customerForm.email.$invalid && !customerForm.email.$pristine }"
+                                           name="email" type="email" placeholder="(*) Email Address" ng-model="vm.editableData.user.email" required />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="phone" ng-model="vm.editableData.phone_number" placeholder="Phone Number" maxlength="14" ui-us-phone-number-mask />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" ng-model="vm.editableData.sales_representative"
+                                            ng-options="salesRep.user.id as (salesRep.user.first_name + ' ' + salesRep.user.last_name) for salesRep in vm.salesRep">
+                                        <option value="" ng-if="vm.editableData.sales_representative==null" class="hidden" selected>-- Sales Rep --</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" ng-model="vm.editableData.clinic_type">
+                                        <option value="" selected class="hidden">-- Clinic Type --</option>
+                                        <option value="orthopedics">Orthopedics</option>
+                                        <option value="podiatry">Podiatry</option>
+                                        <option value="pain_management">Pain Management</option>
+                                        <option value="opthalmology">Ophthalmology</option>
+                                        <option value="dermatology">Dermatology</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="vm.editableData.street_address" placeholder="Street Address" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="vm.editableData.city" placeholder="City" />
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-6">
+                                        <select class="form-control" ng-model="vm.editableData.state">
+                                            <option value="" class="hidden" selected>-- State --</option>
+                                            <option ng-repeat="(state, stateLabel) in vm.usStates.states" value="{{state}}">{{stateLabel}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input class="form-control" type="text" ng-model="vm.editableData.zip_code" placeholder="Zip Code" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" ng-model="vm.editableData.num_locations" placeholder="Number of Locations" />
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" ng-model="vm.editableData.num_physicians" placeholder="Number of Physicians" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" ng-model="vm.editableData.billing_percentage" placeholder="Billing %" />
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" ng-model="vm.editableData.switching_fee" placeholder="Switch Fees" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" ng-model="vm.editableData.enrollment_fee" placeholder="Enrollment Fee" />
+                                    </div>
+                                    <div class="col-xs-6 date_picker">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup="M!/d!/yyyy" ng-model="vm.editableData.enrollment_date"
+                                                   placeholder="Enrollment Date" ng-focus="vm.openEnrollmentDate()" is-open="vm.enrollmentDateOpened" popup-placement="bottom-right" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="vm.openEnrollmentDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" ng-model="vm.editableData.monthly_fee" placeholder="Monthly Fees" />
+                                    </div>
+                                    <div class="col-xs-6 date_picker">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup="M!/d!/yyyy" ng-model="vm.editableData.monthly_fee_start_date"
+                                                   placeholder="Monthly Fees Starting Date" ng-focus="vm.openMonthlyFeeStartDate()" is-open="vm.monthlyFeeStartDateOpened" popup-placement="bottom-right" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="vm.openMonthlyFeeStartDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group date_picker">
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" uib-datepicker-popup="M!/d!/yyyy" ng-model="vm.editableData.software_install"
+                                               placeholder="Software Install" ng-focus="vm.openSoftwareInstall()" is-open="vm.softwareInstallOpened" popup-placement="bottom-right" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="vm.openSoftwareInstall()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-6 date_picker">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup="M!/d!/yyyy" ng-model="vm.editableData.active_date"
+                                                   placeholder="Active Date" ng-focus="vm.openActiveDate()" is-open="vm.activeDateOpened" popup-placement="bottom-right" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="vm.openActiveDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-6 date_picker">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup="M!/d!/yyyy" ng-model="vm.editableData.credentialed_date"
+                                                   placeholder="Credentialed Date" ng-focus="vm.openCredentialedDate()" is-open="vm.credentialedDateOpened" popup-placement="bottom-right" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="vm.openCredentialedDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-info" ui-sref="customers">Back</button>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <button type="submit" class="btn btn-primary" ng-disabled="customerForm.$invalid">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

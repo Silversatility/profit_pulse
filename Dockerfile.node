@@ -1,0 +1,6 @@
+FROM node:9.2.0
+RUN mkdir /profit_pulse
+WORKDIR /profit_pulse
+ADD . /profit_pulse/
+
+RUN npm install --loglevel=error
